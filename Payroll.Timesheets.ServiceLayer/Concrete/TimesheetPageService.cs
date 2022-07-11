@@ -1,5 +1,6 @@
 ﻿using Payroll.Timesheets.Domain;
 using Payroll.Timesheets.Persistence;
+using Payroll.Timesheets.ServiceLayer.EfCore.QueryObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,12 +37,7 @@ namespace Payroll.Timesheets.ServiceLayer.EfCore.Queries
                 ts.TotalHours > 0
             );
 
-            List<int> pages = timesheets
-            .GroupBy(ts => ts.Page, ts => ts.Page)
-            .Select((page, i) => page.First())
-            .ToList();
-
-            return pages;
+            return timesheets.GroupByPage();
         }
 
     }

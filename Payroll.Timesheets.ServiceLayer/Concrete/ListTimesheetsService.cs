@@ -1,4 +1,5 @@
-﻿using Payroll.Timesheets.Domain;
+﻿using Microsoft.EntityFrameworkCore;
+using Payroll.Timesheets.Domain;
 using Payroll.Timesheets.Persistence;
 using System;
 using System.Collections.Generic;
@@ -17,20 +18,13 @@ namespace Payroll.Timesheets.ServiceLayer.EfCore.Queries
         }
 
 
-
-        public IEnumerable<Timesheet> GetTimesheets() =>
-            Context.Timesheets;
+        public IQueryable<Timesheet> GetTimesheets() =>
+            Context.Timesheets.AsNoTracking();
 
         public IEnumerable<Timesheet> FilterExportableTimesheets(DateTime cutoffDate, string payrollCode, string bankCategory)
         {
-            List<Timesheet>? timesheets = GetTimesheets()
-                .Where(ts =>
-                    ts.IsConfirmed &&
-                    ts.CutoffDate == cutoffDate && ts.PayrollCode == payrollCode &&
-                    ts.BankCategory == bankCategory &&
-                    ts.TotalHours > 0
-                )
-                .OrderBy(ts => ts.EE.Fullname)
+            List<Timesheet> timesheets = GetTimesheets()
+                .FilterByExportable(cutoffDate, payrollCode, bankCategory)
                 .ToList();
             return timesheets;
         }
