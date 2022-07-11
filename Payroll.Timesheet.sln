@@ -1,0 +1,100 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32602.291
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Payroll.Timesheets.ServiceLayer.Outputs", "Payroll.Timesheets.ServiceLayer.Outputs\Payroll.Timesheets.ServiceLayer.Outputs.csproj", "{C46B1FE9-A9DE-4537-AA2A-88D0BF709BF4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Payroll.Timesheets.Infrastructure", "Payroll.Timesheets.Infrastructure.Common\Payroll.Timesheets.Infrastructure.csproj", "{2FBF6E8A-8F17-4D2B-A42D-E3E0FC7767C9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0 - Domain", "0 - Domain", "{1E17A7B1-B755-499E-ACA2-12BB038D9401}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Persistence", "1 - Persistence", "{ADD9FF03-B3F5-4B0E-91ED-BD7BADFA2C68}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Domain Logic", "2 - Domain Logic", "{0E1FA442-DED5-4AD8-8853-918F401FF990}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Infrastructure", "3 - Infrastructure", "{94874A3A-00CC-41B1-B340-25DA919AE4B9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Service Layer", "4 - Service Layer", "{CD93605C-ED98-4134-970A-39CE7AB8B93D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Payroll.Timesheets.BizLogic", "Payroll.Timesheets.BizLogic\Payroll.Timesheets.BizLogic.csproj", "{0AC789A8-1135-48D1-8372-A2F1901978A3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Payroll.Timesheets.BizDbAccess", "Payroll.Timesheets.BizDbAccess\Payroll.Timesheets.BizDbAccess.csproj", "{1A152F83-C11C-41F2-AB7D-A58CF4E908E3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Payroll.Timesheets.Domain", "Payroll.Timesheets.Domain\Payroll.Timesheets.Domain.csproj", "{9E98D349-0FC4-4246-A287-974BB996BB1D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Payroll.Timesheets.Persistence", "Payroll.Timesheets.Persistence\Payroll.Timesheets.Persistence.csproj", "{B6AF7750-D491-4C9F-B92A-2B7746FA070F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Payroll.Timesheets.ServiceLayer.Common", "Payroll.Timesheets.ServiceLayer.Common\Payroll.Timesheets.ServiceLayer.Common.csproj", "{594DB83E-4C79-40E5-97B4-B3AFCB75F878}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Payroll.Timesheets.ServiceLayer.TimeSystem", "Payroll.Timesheets.ServiceLayer.TimeSystem\Payroll.Timesheets.ServiceLayer.TimeSystem.csproj", "{6DBE6D70-0049-4BEA-B73F-FD2944D56F1D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Payroll.Timesheets.ServiceLayer.EfCore", "Payroll.Timesheets.ServiceLayer\Payroll.Timesheets.ServiceLayer.EfCore.csproj", "{47D9322B-00B4-4777-BCB6-27A5495E7AB9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PayrollManagement.Application", "..\payroll-management-system(ddd based) - migrate to net5\PayrollManagement.Application\PayrollManagement.Application.csproj", "{BFD44FF1-90D4-44C7-8195-55278EAEC979}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C46B1FE9-A9DE-4537-AA2A-88D0BF709BF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C46B1FE9-A9DE-4537-AA2A-88D0BF709BF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C46B1FE9-A9DE-4537-AA2A-88D0BF709BF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C46B1FE9-A9DE-4537-AA2A-88D0BF709BF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FBF6E8A-8F17-4D2B-A42D-E3E0FC7767C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FBF6E8A-8F17-4D2B-A42D-E3E0FC7767C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FBF6E8A-8F17-4D2B-A42D-E3E0FC7767C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FBF6E8A-8F17-4D2B-A42D-E3E0FC7767C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AC789A8-1135-48D1-8372-A2F1901978A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AC789A8-1135-48D1-8372-A2F1901978A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AC789A8-1135-48D1-8372-A2F1901978A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AC789A8-1135-48D1-8372-A2F1901978A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A152F83-C11C-41F2-AB7D-A58CF4E908E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A152F83-C11C-41F2-AB7D-A58CF4E908E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A152F83-C11C-41F2-AB7D-A58CF4E908E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A152F83-C11C-41F2-AB7D-A58CF4E908E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E98D349-0FC4-4246-A287-974BB996BB1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E98D349-0FC4-4246-A287-974BB996BB1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E98D349-0FC4-4246-A287-974BB996BB1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E98D349-0FC4-4246-A287-974BB996BB1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6AF7750-D491-4C9F-B92A-2B7746FA070F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6AF7750-D491-4C9F-B92A-2B7746FA070F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6AF7750-D491-4C9F-B92A-2B7746FA070F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6AF7750-D491-4C9F-B92A-2B7746FA070F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{594DB83E-4C79-40E5-97B4-B3AFCB75F878}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{594DB83E-4C79-40E5-97B4-B3AFCB75F878}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{594DB83E-4C79-40E5-97B4-B3AFCB75F878}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{594DB83E-4C79-40E5-97B4-B3AFCB75F878}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DBE6D70-0049-4BEA-B73F-FD2944D56F1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DBE6D70-0049-4BEA-B73F-FD2944D56F1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DBE6D70-0049-4BEA-B73F-FD2944D56F1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DBE6D70-0049-4BEA-B73F-FD2944D56F1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47D9322B-00B4-4777-BCB6-27A5495E7AB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47D9322B-00B4-4777-BCB6-27A5495E7AB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47D9322B-00B4-4777-BCB6-27A5495E7AB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47D9322B-00B4-4777-BCB6-27A5495E7AB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFD44FF1-90D4-44C7-8195-55278EAEC979}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFD44FF1-90D4-44C7-8195-55278EAEC979}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFD44FF1-90D4-44C7-8195-55278EAEC979}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFD44FF1-90D4-44C7-8195-55278EAEC979}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C46B1FE9-A9DE-4537-AA2A-88D0BF709BF4} = {CD93605C-ED98-4134-970A-39CE7AB8B93D}
+		{2FBF6E8A-8F17-4D2B-A42D-E3E0FC7767C9} = {94874A3A-00CC-41B1-B340-25DA919AE4B9}
+		{0AC789A8-1135-48D1-8372-A2F1901978A3} = {0E1FA442-DED5-4AD8-8853-918F401FF990}
+		{1A152F83-C11C-41F2-AB7D-A58CF4E908E3} = {0E1FA442-DED5-4AD8-8853-918F401FF990}
+		{9E98D349-0FC4-4246-A287-974BB996BB1D} = {1E17A7B1-B755-499E-ACA2-12BB038D9401}
+		{B6AF7750-D491-4C9F-B92A-2B7746FA070F} = {ADD9FF03-B3F5-4B0E-91ED-BD7BADFA2C68}
+		{594DB83E-4C79-40E5-97B4-B3AFCB75F878} = {CD93605C-ED98-4134-970A-39CE7AB8B93D}
+		{6DBE6D70-0049-4BEA-B73F-FD2944D56F1D} = {CD93605C-ED98-4134-970A-39CE7AB8B93D}
+		{47D9322B-00B4-4777-BCB6-27A5495E7AB9} = {CD93605C-ED98-4134-970A-39CE7AB8B93D}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {639DA9A4-F730-4405-B973-413D531239D1}
+	EndGlobalSection
+EndGlobal
