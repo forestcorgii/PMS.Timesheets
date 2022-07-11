@@ -10,9 +10,9 @@ namespace Payroll.Timesheets.ServiceLayer.Outputs
 {
     class ExportTimesheetsDbfService
     {
-        private void ExportDBF(string location, DateTime payrollDate, List<Timesheet> records)
+        private void ExportDBF(string location, DateTime payrollDate, List<Timesheet> timesheets)
         {
-            if (records.Count() > 0)
+            if (timesheets.Count() > 0)
             {
                 Stream dbfStream = File.Create(location);
 
@@ -21,9 +21,9 @@ namespace Payroll.Timesheets.ServiceLayer.Outputs
                 dbfWriter.Fields = GetDBFFields().ToArray();
 
                 int CODE = payrollDate.Day == 15 ? 1 : 2;
-                for (int r = 0, loopTo = records.Count() - 1; r <= loopTo; r++)
+                for (int r = 0, loopTo = timesheets.Count() - 1; r <= loopTo; r++)
                 {
-                    dbfWriter.WriteRecord(ToDBFRecordFormat(records[r], CODE, 0));
+                    dbfWriter.WriteRecord(ToDBFRecordFormat(timesheets[r], CODE, 0));
                 }
 
                 dbfWriter.Close();
@@ -33,23 +33,24 @@ namespace Payroll.Timesheets.ServiceLayer.Outputs
 
 
         public string[] ToDBFRecordFormat(Timesheet timesheet, int CODE, int DATER) =>
-       new[] { DATER.ToString(),
-                CODE.ToString(),
-                timesheet.EEId,
-                timesheet.TotalHours.ToString(),
-                timesheet.TotalOT.ToString(),
-                timesheet.TotalRDOT.ToString(),
-                0.ToString(),
-                timesheet.TotalHOT.ToString(),
-                0.ToString(),
-                timesheet.TotalND.ToString(),
-                timesheet.TotalTardy.ToString(),
-                0.ToString(),
-                0.ToString(),
-                0.ToString(),
-                0.ToString(),
-                0.ToString(), 0.ToString(), 0.ToString(),
-                0.ToString(), 0.ToString(), 0.ToString() };
+           new[] { DATER.ToString(),
+                    CODE.ToString(),
+                    timesheet.EEId,
+                    timesheet.TotalHours.ToString(),
+                    timesheet.TotalOT.ToString(),
+                    timesheet.TotalRDOT.ToString(),
+                    0.ToString(),
+                    timesheet.TotalHOT.ToString(),
+                    0.ToString(),
+                    timesheet.TotalND.ToString(),
+                    timesheet.TotalTardy.ToString(),
+                    0.ToString(),
+                    0.ToString(),
+                    0.ToString(),
+                    0.ToString(),
+                    0.ToString(), 0.ToString(), 0.ToString(),
+                    0.ToString(), 0.ToString(), 0.ToString()
+           };
 
         private List<DotNetDBF.DBFField> GetDBFFields()
         {
@@ -78,6 +79,6 @@ namespace Payroll.Timesheets.ServiceLayer.Outputs
             return flds;
         }
 
-  
+
     }
 }

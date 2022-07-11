@@ -25,8 +25,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Payroll.Timesheets.Domain",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Payroll.Timesheets.Persistence", "Payroll.Timesheets.Persistence\Payroll.Timesheets.Persistence.csproj", "{B6AF7750-D491-4C9F-B92A-2B7746FA070F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Payroll.Timesheets.ServiceLayer.Common", "Payroll.Timesheets.ServiceLayer.Common\Payroll.Timesheets.ServiceLayer.Common.csproj", "{594DB83E-4C79-40E5-97B4-B3AFCB75F878}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Payroll.Timesheets.ServiceLayer.TimeSystem", "Payroll.Timesheets.ServiceLayer.TimeSystem\Payroll.Timesheets.ServiceLayer.TimeSystem.csproj", "{6DBE6D70-0049-4BEA-B73F-FD2944D56F1D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Payroll.Timesheets.ServiceLayer.EfCore", "Payroll.Timesheets.ServiceLayer\Payroll.Timesheets.ServiceLayer.EfCore.csproj", "{47D9322B-00B4-4777-BCB6-27A5495E7AB9}"
@@ -63,10 +61,6 @@ Global
 		{B6AF7750-D491-4C9F-B92A-2B7746FA070F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B6AF7750-D491-4C9F-B92A-2B7746FA070F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B6AF7750-D491-4C9F-B92A-2B7746FA070F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{594DB83E-4C79-40E5-97B4-B3AFCB75F878}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{594DB83E-4C79-40E5-97B4-B3AFCB75F878}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{594DB83E-4C79-40E5-97B4-B3AFCB75F878}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{594DB83E-4C79-40E5-97B4-B3AFCB75F878}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6DBE6D70-0049-4BEA-B73F-FD2944D56F1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6DBE6D70-0049-4BEA-B73F-FD2944D56F1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6DBE6D70-0049-4BEA-B73F-FD2944D56F1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -90,7 +84,6 @@ Global
 		{1A152F83-C11C-41F2-AB7D-A58CF4E908E3} = {0E1FA442-DED5-4AD8-8853-918F401FF990}
 		{9E98D349-0FC4-4246-A287-974BB996BB1D} = {1E17A7B1-B755-499E-ACA2-12BB038D9401}
 		{B6AF7750-D491-4C9F-B92A-2B7746FA070F} = {ADD9FF03-B3F5-4B0E-91ED-BD7BADFA2C68}
-		{594DB83E-4C79-40E5-97B4-B3AFCB75F878} = {CD93605C-ED98-4134-970A-39CE7AB8B93D}
 		{6DBE6D70-0049-4BEA-B73F-FD2944D56F1D} = {CD93605C-ED98-4134-970A-39CE7AB8B93D}
 		{47D9322B-00B4-4777-BCB6-27A5495E7AB9} = {CD93605C-ED98-4134-970A-39CE7AB8B93D}
 	EndGlobalSection

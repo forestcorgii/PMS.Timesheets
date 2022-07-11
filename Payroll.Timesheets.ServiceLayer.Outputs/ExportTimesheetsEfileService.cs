@@ -13,38 +13,27 @@ namespace Payroll.Timesheets.ServiceLayer.Outputs
     class ExportTimesheetsEfileService
     {
 
-        private void ExportEFile(string location, DateTime payrollDate, string payroll_code, string bank_category, List<Timesheet> records)
+        private void ExportEFile(string location, DateTime[] cutoffRange, string payroll_code, string bank_category, List<Timesheet> timesheets)
         {
-            if (records.Count() == 0) return;
-
-            var cutoffRange = CutoffService.GetCutoffRange(payrollDate);
+            if (timesheets.Count() == 0) return;
 
             var nWorkbook = new HSSFWorkbook();
             var nSheet = nWorkbook.CreateSheet("Sheet1");
 
             var nRow = nSheet.CreateRow(0);
-            nRow.CreateCell(2).SetCellValue(string.Format("{0} - {1}", payroll_code, bank_category));
-            nRow = nSheet.CreateRow(1);
-            nRow.CreateCell(2).SetCellValue(string.Format("{0:MMMM d} - {1:MMMM dd, yyyy}", cutoffRange[0], cutoffRange[1]));
-            nRow = nSheet.CreateRow(3);
-            nRow.CreateCell(0).SetCellValue("#");
-            nRow.CreateCell(1).SetCellValue("# ID");
-            nRow.CreateCell(2).SetCellValue("NAME");
-            nRow.CreateCell(3).SetCellValue("DEPT");
-            nRow.CreateCell(4).SetCellValue("REG HRS");
-            nRow.CreateCell(5).SetCellValue("R OT");
-            nRow.CreateCell(6).SetCellValue("RD OT");
-            nRow.CreateCell(7).SetCellValue("HOL OT");
-            nRow.CreateCell(8).SetCellValue("ND");
-            nRow.CreateCell(9).SetCellValue("TARDY");
-            nRow.CreateCell(10).SetCellValue("ALLOWANCE");
+            nRow.CreateCell(2).SetCellValue($"{payroll_code} - {bank_category}");
 
-            for (int r = 0, loopTo = records.Count - 1; r <= loopTo; r++)
+            nRow = nSheet.CreateRow(1);
+            nRow.CreateCell(2).SetCellValue($"{cutoffRange[0]:MMMM d} - {cutoffRange[1]:MMMM dd, yyyy}");
+
+            nRow = nSheet.CreateRow(3);
+            WriteHeader(nRow);
+
+            for (int r = 0, loopTo = timesheets.Count - 1; r <= loopTo; r++)
             {
                 nRow = nSheet.CreateRow(4 + r);
                 nRow.CreateCell(0).SetCellValue(r + 1);
-
-                ToEERowFormat(nRow, records[r]);
+                WriteEERow(nRow, timesheets[r]);
             }
 
             using var nEFile = new FileStream(location, FileMode.Create, FileAccess.Write);
@@ -52,7 +41,22 @@ namespace Payroll.Timesheets.ServiceLayer.Outputs
         }
 
 
-        public void ToEERowFormat(IRow row, Timesheet timesheet)
+        public void WriteHeader(IRow row)
+        {
+            row.CreateCell(0).SetCellValue("#");
+            row.CreateCell(1).SetCellValue("# ID");
+            row.CreateCell(2).SetCellValue("NAME");
+            row.CreateCell(3).SetCellValue("DEPT");
+            row.CreateCell(4).SetCellValue("REG HRS");
+            row.CreateCell(5).SetCellValue("R OT");
+            row.CreateCell(6).SetCellValue("RD OT");
+            row.CreateCell(7).SetCellValue("HOL OT");
+            row.CreateCell(8).SetCellValue("ND");
+            row.CreateCell(9).SetCellValue("TARDY");
+            row.CreateCell(10).SetCellValue("ALLOWANCE");
+        }
+
+        public void WriteEERow(IRow row, Timesheet timesheet)
         {
             row.CreateCell(1).SetCellValue(timesheet.EEId);
             row.CreateCell(2).SetCellValue(timesheet.EE.Fullname);
