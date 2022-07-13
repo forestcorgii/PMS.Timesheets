@@ -30,6 +30,9 @@ namespace Payroll.Timesheets.FrontEnd.Controller
         public event DownloadEndedHandler? DownloadEnded;
         #endregion
 
+        private bool CancelPending { get; set; }
+        public bool IsBusy { get; private set; }
+
 
         private readonly TimeDownloaderAdapter Adapter;
         private readonly TimesheetDbContext Context;
@@ -40,24 +43,52 @@ namespace Payroll.Timesheets.FrontEnd.Controller
             Adapter = TimeDownloaderFactory.CreateAdapter(Shared.Configuration);
         }
 
+        public void Cancel() => CancelPending = true;
+
+
         public async Task StartDownload(DateTime cutoffDate, string payrollCode, string bankCategory)
         {
             Cutoff cutoff = new Cutoff(cutoffDate);
 
             DownloadSummaryService service = new(Adapter);
             DownloadSummary<Timesheet> summary = await service.GetTimesheetSummary(cutoff.CutoffRange, payrollCode);
-            if (summary is not null)
+            if (summary is not null && IsBusy == false)
             {
+                IsBusy = true;
                 DownloadStarted?.Invoke(this, int.Parse(summary.TotalPage));
 
                 foreach (int page in Enumerable.Range(0, int.Parse(summary.TotalPage) + 1).ToList())
-                    await DownloadPageContentAsync(cutoff, payrollCode, bankCategory, page);
+                {
+                    await DownloadPageContentAsync(cutoffDate, payrollCode, bankCategory, page);
+                    if (CancelPending)
+                    {
+                        CancelPending = false;
+                        DownloadCancelled?.Invoke(this);
+                        break;
+                    }
+                }
             }
+            IsBusy = false;
             DownloadEnded?.Invoke(this, 0);
         }
 
-        private async Task DownloadPageContentAsync(Cutoff cutoff, string payrollCode, string bankCategory, int page)
+        public async Task StartDownload(DateTime cutoffDate, string payrollCode, string bankCategory, int page)
         {
+            if (IsBusy == false)
+            {
+                IsBusy = true;
+                DownloadStarted?.Invoke(this, 1);
+
+                await DownloadPageContentAsync(cutoffDate, payrollCode, bankCategory, page);
+
+                IsBusy = false;
+                DownloadEnded?.Invoke(this, 0);
+            }
+        }
+
+        private async Task DownloadPageContentAsync(DateTime cutoffDate, string payrollCode, string bankCategory, int page)
+        {
+            Cutoff cutoff = new Cutoff(cutoffDate);
             try
             {
                 DownloadTimesheetService service = new(Adapter);
@@ -81,7 +112,6 @@ namespace Payroll.Timesheets.FrontEnd.Controller
             catch (Exception ex)
             {
                 PageDownloadError?.Invoke(this, ex.Message);
-                Console.WriteLine(ex.Message);
             }
         }
     }
