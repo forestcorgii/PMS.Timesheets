@@ -35,6 +35,21 @@ namespace Payroll.Timesheets.FrontEnd
             this.CbBankCategory = new System.Windows.Forms.ComboBox();
             this.Pb1 = new System.Windows.Forms.ProgressBar();
             this.DgvTimesheets = new System.Windows.Forms.DataGridView();
+            this.clDownload = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.EEId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clCutoffId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clPayrollCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clBankCategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clTotalHours = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clTotalOT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clTotalRDOT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clTotalHOT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clTotalND = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clTotalTardy = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clIsConfirmed = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.clPage = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clTimesheetId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clDateCreated = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DgvTimesheets)).BeginInit();
             this.SuspendLayout();
             // 
@@ -94,18 +109,172 @@ namespace Payroll.Timesheets.FrontEnd
             // 
             // DgvTimesheets
             // 
+            this.DgvTimesheets.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.DgvTimesheets.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvTimesheets.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.clDownload,
+            this.EEId,
+            this.clCutoffId,
+            this.clPayrollCode,
+            this.clBankCategory,
+            this.clTotalHours,
+            this.clTotalOT,
+            this.clTotalRDOT,
+            this.clTotalHOT,
+            this.clTotalND,
+            this.clTotalTardy,
+            this.clIsConfirmed,
+            this.clPage,
+            this.clTimesheetId,
+            this.clDateCreated});
             this.DgvTimesheets.Location = new System.Drawing.Point(12, 70);
             this.DgvTimesheets.Name = "DgvTimesheets";
             this.DgvTimesheets.RowTemplate.Height = 25;
-            this.DgvTimesheets.Size = new System.Drawing.Size(391, 217);
+            this.DgvTimesheets.Size = new System.Drawing.Size(1055, 217);
             this.DgvTimesheets.TabIndex = 5;
+            this.DgvTimesheets.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvTimesheets_CellContentClick);
+            // 
+            // clDownload
+            // 
+            this.clDownload.HeaderText = "Action";
+            this.clDownload.Name = "clDownload";
+            this.clDownload.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.clDownload.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.clDownload.Text = "Download";
+            this.clDownload.UseColumnTextForButtonValue = true;
+            // 
+            // EEId
+            // 
+            this.EEId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.EEId.DataPropertyName = "EEID";
+            this.EEId.HeaderText = "EEId";
+            this.EEId.Name = "EEId";
+            this.EEId.Width = 54;
+            // 
+            // clCutoffId
+            // 
+            this.clCutoffId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.clCutoffId.DataPropertyName = "CutoffId";
+            this.clCutoffId.HeaderText = "Cutoff Id";
+            this.clCutoffId.Name = "clCutoffId";
+            this.clCutoffId.ReadOnly = true;
+            this.clCutoffId.Width = 79;
+            // 
+            // clPayrollCode
+            // 
+            this.clPayrollCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.clPayrollCode.DataPropertyName = "PayrollCode";
+            this.clPayrollCode.HeaderText = "PayrollCode";
+            this.clPayrollCode.Name = "clPayrollCode";
+            this.clPayrollCode.ReadOnly = true;
+            this.clPayrollCode.Width = 96;
+            // 
+            // clBankCategory
+            // 
+            this.clBankCategory.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.clBankCategory.DataPropertyName = "BankCategory";
+            this.clBankCategory.HeaderText = "BankCategory";
+            this.clBankCategory.Name = "clBankCategory";
+            this.clBankCategory.ReadOnly = true;
+            this.clBankCategory.Width = 106;
+            // 
+            // clTotalHours
+            // 
+            this.clTotalHours.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.clTotalHours.DataPropertyName = "TotalHours";
+            this.clTotalHours.HeaderText = "Total Hours";
+            this.clTotalHours.Name = "clTotalHours";
+            this.clTotalHours.ReadOnly = true;
+            this.clTotalHours.Width = 92;
+            // 
+            // clTotalOT
+            // 
+            this.clTotalOT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.clTotalOT.DataPropertyName = "TotalOT";
+            this.clTotalOT.HeaderText = "Total OT";
+            this.clTotalOT.Name = "clTotalOT";
+            this.clTotalOT.ReadOnly = true;
+            this.clTotalOT.Width = 74;
+            // 
+            // clTotalRDOT
+            // 
+            this.clTotalRDOT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.clTotalRDOT.DataPropertyName = "TotalRDOT";
+            this.clTotalRDOT.HeaderText = "Total RD_OT";
+            this.clTotalRDOT.Name = "clTotalRDOT";
+            this.clTotalRDOT.ReadOnly = true;
+            this.clTotalRDOT.Width = 94;
+            // 
+            // clTotalHOT
+            // 
+            this.clTotalHOT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.clTotalHOT.DataPropertyName = "TotalHOT";
+            this.clTotalHOT.HeaderText = "Total H_OT";
+            this.clTotalHOT.Name = "clTotalHOT";
+            this.clTotalHOT.ReadOnly = true;
+            this.clTotalHOT.Width = 88;
+            // 
+            // clTotalND
+            // 
+            this.clTotalND.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.clTotalND.DataPropertyName = "TotalND";
+            this.clTotalND.HeaderText = "Total ND";
+            this.clTotalND.Name = "clTotalND";
+            this.clTotalND.ReadOnly = true;
+            this.clTotalND.Width = 77;
+            // 
+            // clTotalTardy
+            // 
+            this.clTotalTardy.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.clTotalTardy.DataPropertyName = "TotalTardy";
+            this.clTotalTardy.HeaderText = "Total Tardy";
+            this.clTotalTardy.Name = "clTotalTardy";
+            this.clTotalTardy.ReadOnly = true;
+            this.clTotalTardy.Width = 88;
+            // 
+            // clIsConfirmed
+            // 
+            this.clIsConfirmed.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.clIsConfirmed.DataPropertyName = "IsConfirmed";
+            this.clIsConfirmed.HeaderText = "Confirmed";
+            this.clIsConfirmed.Name = "clIsConfirmed";
+            this.clIsConfirmed.ReadOnly = true;
+            this.clIsConfirmed.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.clIsConfirmed.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.clIsConfirmed.Width = 89;
+            // 
+            // clPage
+            // 
+            this.clPage.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.clPage.DataPropertyName = "Page";
+            this.clPage.HeaderText = "Page";
+            this.clPage.Name = "clPage";
+            this.clPage.ReadOnly = true;
+            this.clPage.Width = 58;
+            // 
+            // clTimesheetId
+            // 
+            this.clTimesheetId.DataPropertyName = "TimesheetId";
+            this.clTimesheetId.HeaderText = "Timesheet Id";
+            this.clTimesheetId.Name = "clTimesheetId";
+            this.clTimesheetId.ReadOnly = true;
+            this.clTimesheetId.Visible = false;
+            // 
+            // clDateCreated
+            // 
+            this.clDateCreated.DataPropertyName = "DateCreated";
+            this.clDateCreated.HeaderText = "DateCreated";
+            this.clDateCreated.Name = "clDateCreated";
+            this.clDateCreated.ReadOnly = true;
+            this.clDateCreated.Visible = false;
             // 
             // FrmTestDownload
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(427, 299);
+            this.ClientSize = new System.Drawing.Size(1079, 299);
             this.Controls.Add(this.DgvTimesheets);
             this.Controls.Add(this.Pb1);
             this.Controls.Add(this.CbBankCategory);
@@ -128,5 +297,20 @@ namespace Payroll.Timesheets.FrontEnd
         private System.Windows.Forms.ComboBox CbBankCategory;
         private System.Windows.Forms.ProgressBar Pb1;
         private System.Windows.Forms.DataGridView DgvTimesheets;
+        private System.Windows.Forms.DataGridViewButtonColumn clDownload;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EEId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clCutoffId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clPayrollCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clBankCategory;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clTotalHours;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clTotalOT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clTotalRDOT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clTotalHOT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clTotalND;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clTotalTardy;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn clIsConfirmed;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clPage;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clTimesheetId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clDateCreated;
     }
 }

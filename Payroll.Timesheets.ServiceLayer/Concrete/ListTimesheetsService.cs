@@ -24,7 +24,7 @@ namespace Payroll.Timesheets.ServiceLayer.EfCore.Queries
         public IEnumerable<Timesheet> FilterExportableTimesheets(string cutoffId, string payrollCode, string bankCategory)
         {
             List<Timesheet> timesheets = GetTimesheets()
-                .FilterByExportable(cutoffId, payrollCode, bankCategory)
+                .FilterByExportable(cutoffId, payrollCode, bankCategory)// .Join<Timesheet,EmployeeView,string,string>(Context.Employees,ts=>ts.EEId,ee=>ee.EEId,(ts,ee,str)=>)
                 .ToList();
             return timesheets;
         }

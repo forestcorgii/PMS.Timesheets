@@ -25,9 +25,15 @@ namespace Payroll.Timesheets.FrontEnd
             DownloadController = new();
             DownloadController.PageDownload += Controller_PageDownloadSucceeded;
             DownloadController.DownloadStarted += Controller_DownloadStarted;
-            DownloadController.DownloadEnded += DownloadController_DownloadEnded; ;
+            DownloadController.DownloadCancelled += DownloadController_DownloadCancelled;
+            DownloadController.DownloadEnded += DownloadController_DownloadEnded;
 
             Controller = new();
+        }
+
+        private void DownloadController_DownloadCancelled(object sender)
+        {
+            throw new NotImplementedException();
         }
 
         private void FrmTestDownload_Load(object sender, EventArgs e)
@@ -56,6 +62,14 @@ namespace Payroll.Timesheets.FrontEnd
         private void BtnRun_Click(object sender, EventArgs e)
         {
             _ = DownloadController.StartDownload(DtCutoffDate.Value, CbPayrollCode.Text, CbBankCategory.Text);
+        }
+
+        private void DgvTimesheets_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 0)
+            {
+                _ = DownloadController.StartDownload(DtCutoffDate.Value, CbPayrollCode.Text, CbBankCategory.Text, 0);
+            }
         }
     }
 }
