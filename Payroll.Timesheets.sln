@@ -31,6 +31,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Payroll.Timesheets.ServiceL
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PayrollManagement.Application", "..\payroll-management-system(ddd based) - migrate to net5\PayrollManagement.Application\PayrollManagement.Application.csproj", "{BFD44FF1-90D4-44C7-8195-55278EAEC979}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Payroll.Timesheets.FrontEnd", "Payroll.Timesheets.FrontEnd\Payroll.Timesheets.FrontEnd.csproj", "{3CCE70CD-3BCD-4030-AADD-CCA498EEB0D7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 - Front End", "5 - Front End", "{861001BA-F013-4A0B-A3D6-7B9B25D1C12C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Payroll.Timesheets.ServiceLayer.Common", "Payroll.Timesheets.ServiceLayer.Common\Payroll.Timesheets.ServiceLayer.Common.csproj", "{EBD9DF72-4DB9-497C-A314-780866F64738}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,6 +79,14 @@ Global
 		{BFD44FF1-90D4-44C7-8195-55278EAEC979}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BFD44FF1-90D4-44C7-8195-55278EAEC979}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BFD44FF1-90D4-44C7-8195-55278EAEC979}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CCE70CD-3BCD-4030-AADD-CCA498EEB0D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CCE70CD-3BCD-4030-AADD-CCA498EEB0D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CCE70CD-3BCD-4030-AADD-CCA498EEB0D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CCE70CD-3BCD-4030-AADD-CCA498EEB0D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBD9DF72-4DB9-497C-A314-780866F64738}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBD9DF72-4DB9-497C-A314-780866F64738}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBD9DF72-4DB9-497C-A314-780866F64738}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBD9DF72-4DB9-497C-A314-780866F64738}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -86,6 +100,8 @@ Global
 		{B6AF7750-D491-4C9F-B92A-2B7746FA070F} = {ADD9FF03-B3F5-4B0E-91ED-BD7BADFA2C68}
 		{6DBE6D70-0049-4BEA-B73F-FD2944D56F1D} = {CD93605C-ED98-4134-970A-39CE7AB8B93D}
 		{47D9322B-00B4-4777-BCB6-27A5495E7AB9} = {CD93605C-ED98-4134-970A-39CE7AB8B93D}
+		{3CCE70CD-3BCD-4030-AADD-CCA498EEB0D7} = {861001BA-F013-4A0B-A3D6-7B9B25D1C12C}
+		{EBD9DF72-4DB9-497C-A314-780866F64738} = {CD93605C-ED98-4134-970A-39CE7AB8B93D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {639DA9A4-F730-4405-B973-413D531239D1}

@@ -9,20 +9,22 @@ namespace Payroll.Timesheets.ServiceLayer.TimeSystem.Adapter
 {
     public class TimeDownloaderFactory
     {
-        public TimeDownloaderAdapter CreateAdapter(IConfigurationRoot config)
+        public static TimeDownloaderAdapter CreateAdapter(IConfigurationRoot config)
         {
-            var section = config.GetRequiredSection("HRMSAPI");
+            var section = config.GetRequiredSection("TimeDownloaderAPI");
 
             Dictionary<string, string> Urls = new();
             Urls.Add("MANILA", section.GetValue<string>("Url"));
             Urls.Add("LEYTE", section.GetValue<string>("Url_Leyte"));
             TimeDownloaderParameter parameter = new()
             {
-                Info = section.GetValue<string>("Info"),
-                APIToken = section.GetValue<string>("APIToken"),
-                Urls = Urls
+                PostData = new()
+                {
+                    info = section.GetValue<string>("Info"),
+                    api_token = section.GetValue<string>("APIToken"),
+                },
+                Urls = Urls,
             };
-
 
             return new TimeDownloaderAdapter(parameter);
         }

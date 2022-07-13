@@ -17,7 +17,7 @@ namespace Payroll.Timesheets.ServiceLayer.TimeSystem.Services
             Adapter = adapter;
         }
 
-        public async Task<DownloadContent<Timesheet>?> DownloadTimesheets(DateTime[] cutoffRange, string payrollCode, int page,string site="MANILA")
+        public async Task<DownloadContent<Timesheet>> DownloadTimesheets(DateTime[] cutoffRange, string payrollCode, int page,string site="MANILA")
         {
         return await Adapter.GetPageContent<DownloadContent<Timesheet>>(cutoffRange[0], cutoffRange[1], page, payrollCode,site);
         }

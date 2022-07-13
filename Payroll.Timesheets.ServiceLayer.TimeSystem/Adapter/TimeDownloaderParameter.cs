@@ -10,8 +10,6 @@ namespace Payroll.Timesheets.ServiceLayer.TimeSystem.Adapter
     {
         public Dictionary<string, string> Urls;
 
-        public string Info;
-        public string APIToken;
         public PostDataClass PostData;
 
 
