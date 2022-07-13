@@ -18,8 +18,8 @@ namespace Payroll.Timesheets.Domain
 
         public string CutoffId { get; set; }
 
-        public string? PayrollCode { get; set; }
-        public string? BankCategory { get; set; }
+        public string PayrollCode { get; set; }
+        public string BankCategory { get; set; }
 
         [JsonProperty("total_hours")]
         public double TotalHours { get; set; }

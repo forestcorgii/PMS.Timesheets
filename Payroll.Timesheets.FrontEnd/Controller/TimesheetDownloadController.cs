@@ -14,11 +14,21 @@ namespace Payroll.Timesheets.FrontEnd.Controller
 {
     public class TimesheetDownloadController
     {
+        #region Event Handler
         public delegate void PageDownloadHandler(object sender, int Page);
+        public delegate void PageDownloadErrorHandler(object sender, string errorMessage);
         public delegate void DownloadStartedHandler(object sender, int TotalPages);
+        public delegate void DownloadCancelledHandler(object sender);
+        public delegate void DownloadEndedHandler(object sender, int TotalPages);
+        #endregion
 
-        public event PageDownloadHandler PageDownloadSucceeded;
-        public event DownloadStartedHandler DownloadStarted;
+        #region Event
+        public event PageDownloadHandler? PageDownload;
+        public event PageDownloadErrorHandler? PageDownloadError;
+        public event DownloadStartedHandler? DownloadStarted;
+        public event DownloadCancelledHandler? DownloadCancelled;
+        public event DownloadEndedHandler? DownloadEnded;
+        #endregion
 
 
         private readonly TimeDownloaderAdapter Adapter;
@@ -29,7 +39,6 @@ namespace Payroll.Timesheets.FrontEnd.Controller
             Context = new TimesheetDbContext();
             Adapter = TimeDownloaderFactory.CreateAdapter(Shared.Configuration);
         }
-
 
         public async Task StartDownload(DateTime cutoffDate, string payrollCode, string bankCategory)
         {
@@ -44,8 +53,7 @@ namespace Payroll.Timesheets.FrontEnd.Controller
                 foreach (int page in Enumerable.Range(0, int.Parse(summary.TotalPage) + 1).ToList())
                     await DownloadPageContentAsync(cutoff, payrollCode, bankCategory, page);
             }
-
-
+            DownloadEnded?.Invoke(this, 0);
         }
 
         private async Task DownloadPageContentAsync(Cutoff cutoff, string payrollCode, string bankCategory, int page)
@@ -67,11 +75,12 @@ namespace Payroll.Timesheets.FrontEnd.Controller
                         writeService.CreateOrUpdate(timesheet);
                     }
                     writeService.SaveChanges();
-                    PageDownloadSucceeded?.Invoke(this, page);
+                    PageDownload?.Invoke(this, page);
                 }
             }
             catch (Exception ex)
             {
+                PageDownloadError?.Invoke(this, ex.Message);
                 Console.WriteLine(ex.Message);
             }
         }

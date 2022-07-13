@@ -31,7 +31,7 @@ namespace Payroll.Timesheets.ServiceLayer.EfCore.Queries
 
         public IEnumerable<Timesheet> GetTimesheetByPayRegisterId(string cutoffId, string payrollCode)
         {
-            List<Timesheet>? timesheets = GetTimesheets()
+            List<Timesheet> timesheets = GetTimesheets()
                 .Where(ts =>
                     ts.CutoffId == cutoffId &&
                     ts.PayrollCode == payrollCode

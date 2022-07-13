@@ -20,17 +20,25 @@ namespace Payroll.Timesheets.FrontEnd
         public FrmTestDownload()
         {
             InitializeComponent();
+
+
+            DownloadController = new();
+            DownloadController.PageDownload += Controller_PageDownloadSucceeded;
+            DownloadController.DownloadStarted += Controller_DownloadStarted;
+            DownloadController.DownloadEnded += DownloadController_DownloadEnded; ;
+
+            Controller = new();
         }
 
         private void FrmTestDownload_Load(object sender, EventArgs e)
         {
-            DownloadController = new();
-            DownloadController.PageDownloadSucceeded += Controller_PageDownloadSucceeded1;
-            DownloadController.DownloadStarted += Controller_DownloadStarted;
-
-
-            Controller = new();
             DgvTimesheets.DataSource = Controller.List();
+        }
+
+        private void DownloadController_DownloadEnded(object sender, int TotalPages)
+        {
+            Pb1.Maximum = 0;
+            Pb1.Value = 0;
         }
 
         private void Controller_DownloadStarted(object sender, int TotalPages)
@@ -39,7 +47,7 @@ namespace Payroll.Timesheets.FrontEnd
             Pb1.Value = 0;
         }
 
-        private void Controller_PageDownloadSucceeded1(object sender, int Page)
+        private void Controller_PageDownloadSucceeded(object sender, int Page)
         {
             Pb1.Value = Page;
         }

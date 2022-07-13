@@ -17,7 +17,7 @@ namespace Payroll.Timesheets.ServiceLayer.EfCore.Queries
         }
 
 
-        public Timesheet? GetTimesheetById(string timesheetId) =>
+        public Timesheet GetTimesheetById(string timesheetId) =>
             Context.Timesheets.Where(ts => ts.TimesheetId == timesheetId).FirstOrDefault();
 
     }
