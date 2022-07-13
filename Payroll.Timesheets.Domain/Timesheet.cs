@@ -16,7 +16,14 @@ namespace Payroll.Timesheets.Domain
         public string EEId { get; set; }
         public virtual EmployeeView EE { get; set; }
 
-        public string CutoffId { get; set; }
+        public DateTime CutoffDate { get; set; }
+
+        //public string PayRegisterId { get; set; }
+        //[ForeignKey("PayRegisterId")]
+        //public virtual PayRegister PayRegister { get; set; }
+
+        //[NotMapped]
+        //public List<AdjustmentBilling> Billings { get; set; }
 
         public string? PayrollCode { get; set; }
         public string? BankCategory { get; set; }
@@ -42,10 +49,7 @@ namespace Payroll.Timesheets.Domain
         [JsonProperty("allowance")]
         public double Allowance { get; set; }
 
-        [NotMapped]
         [JsonProperty("pcv")]
-        public string[][] PCV { get; set; }
-
         public string RawPCV { get; set; }
 
         [JsonProperty("is_confirmed")]
