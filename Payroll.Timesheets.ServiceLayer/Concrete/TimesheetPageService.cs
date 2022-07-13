@@ -16,11 +16,11 @@ namespace Payroll.Timesheets.ServiceLayer.EfCore.Queries
         public TimesheetPageService(TimesheetDbContext context) =>
             Context = context;
 
-        public int GetLastPage(DateTime cutoffDate, string payrollCode)
+        public int GetLastPage(string cutoffId, string payrollCode)
         {
             IQueryable<Timesheet> timesheets = Context.Timesheets
                 .OrderByTotalHours(OrderType.Descending)
-                .FilterBy(cutoffDate, payrollCode);
+                .FilterBy(cutoffId, payrollCode);
 
             if (timesheets.Count() > 0)
                 return timesheets.Max(ts => ts.Page);
@@ -28,9 +28,9 @@ namespace Payroll.Timesheets.ServiceLayer.EfCore.Queries
             return 0;
         }
 
-        public List<int> GetPageWithUnconfirmedTS(DateTime cutoffDate, string payrollCode)
+        public List<int> GetPageWithUnconfirmedTS(string cutoffId, string payrollCode)
         {
-            IQueryable<Timesheet> timesheets = Context.Timesheets.FilterBy(cutoffDate, payrollCode);
+            IQueryable<Timesheet> timesheets = Context.Timesheets.FilterBy(cutoffId, payrollCode);
             
             timesheets = timesheets.Where(ts =>
                 !ts.IsConfirmed &&

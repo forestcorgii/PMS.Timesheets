@@ -19,21 +19,21 @@ namespace Payroll.Timesheets.ServiceLayer.EfCore.Queries
 
 
         public IQueryable<Timesheet> GetTimesheets() =>
-            Context.Timesheets.AsNoTracking();
+            Context.Timesheets;
 
-        public IEnumerable<Timesheet> FilterExportableTimesheets(DateTime cutoffDate, string payrollCode, string bankCategory)
+        public IEnumerable<Timesheet> FilterExportableTimesheets(string cutoffId, string payrollCode, string bankCategory)
         {
             List<Timesheet> timesheets = GetTimesheets()
-                .FilterByExportable(cutoffDate, payrollCode, bankCategory)
+                .FilterByExportable(cutoffId, payrollCode, bankCategory)
                 .ToList();
             return timesheets;
         }
 
-        public IEnumerable<Timesheet> GetTimesheetByPayRegisterId(DateTime cutoffDate, string payrollCode)
+        public IEnumerable<Timesheet> GetTimesheetByPayRegisterId(string cutoffId, string payrollCode)
         {
             List<Timesheet>? timesheets = GetTimesheets()
                 .Where(ts =>
-                    ts.CutoffDate == cutoffDate &&
+                    ts.CutoffId == cutoffId &&
                     ts.PayrollCode == payrollCode
                 )
                 .OrderBy(ts => ts.IsConfirmed)

@@ -9,25 +9,26 @@ namespace Payroll.Timesheets.ServiceLayer.EfCore.Queries
 {
     public static class FilterByExt
     {
-        public static IQueryable<Timesheet> FilterBy(this IQueryable<Timesheet> timesheets, DateTime cutoffDate)
+        public static IQueryable<Timesheet> FilterBy(this IQueryable<Timesheet> timesheets, string cutoffId)
         {
-            return timesheets.Where(ts => ts.CutoffDate == cutoffDate);
+            return timesheets.Where(ts => ts.CutoffId == cutoffId);
         }
 
-        public static IQueryable<Timesheet> FilterBy(this IQueryable<Timesheet> timesheets, DateTime cutoffDate, string payrollCode)
+        public static IQueryable<Timesheet> FilterBy(this IQueryable<Timesheet> timesheets, string cutoffId, string payrollCode)
         {
-            return timesheets.Where(ts => ts.CutoffDate == cutoffDate && ts.PayrollCode == payrollCode);
+            return timesheets.Where(ts => ts.CutoffId == cutoffId && ts.PayrollCode == payrollCode);
         }
 
-        public static IQueryable<Timesheet> FilterByExportable(this IQueryable<Timesheet> timesheets, DateTime cutoffDate, string payrollCode, string bankCategory)
+        public static IQueryable<Timesheet> FilterByExportable(this IQueryable<Timesheet> timesheets, string cutoffId, string payrollCode, string bankCategory)
         {
             return timesheets.Where(ts =>
                     ts.IsConfirmed &&
-                    ts.CutoffDate == cutoffDate && ts.PayrollCode == payrollCode &&
+                    ts.CutoffId == cutoffId && 
+                    ts.PayrollCode == payrollCode &&
                     ts.BankCategory == bankCategory &&
                     ts.TotalHours > 0
                 )
-                .OrderBy(ts => ts.EE.Fullname)
+                .OrderBy(ts => ts.EE.Fullname);
         }
     }
 }

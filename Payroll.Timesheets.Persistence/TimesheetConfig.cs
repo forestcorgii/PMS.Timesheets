@@ -18,7 +18,7 @@ namespace Payroll.Timesheets.Persistence
             builder.Property(cc => cc.EEId).HasColumnType("VARCHAR(8)").IsRequired();
             builder.Property(cc => cc.PayrollCode).HasColumnType("VARCHAR(6)").IsRequired();
             builder.Property(cc => cc.BankCategory).HasColumnType("VARCHAR(6)").IsRequired();
-            builder.Property(cc => cc.CutoffDate).HasColumnType("DATE");
+            builder.Property(cc => cc.CutoffId).HasColumnType("VARCHAR(6)").IsRequired();
             builder.Property(cc => cc.TotalHours).HasColumnType("DOUBLE(6,2)");
             builder.Property(cc => cc.TotalOT).HasColumnType("DOUBLE(6,2)");
             builder.Property(cc => cc.TotalRDOT).HasColumnType("DOUBLE(6,2)");
