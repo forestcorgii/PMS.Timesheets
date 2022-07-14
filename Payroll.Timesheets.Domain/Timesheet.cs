@@ -8,6 +8,7 @@ namespace Payroll.Timesheets.Domain
 {
     public class Timesheet
     {
+        #region Properties
         [Key]
         [Column("id")]
         public string TimesheetId { get; set; }
@@ -16,9 +17,12 @@ namespace Payroll.Timesheets.Domain
         public string EEId { get; set; }
         public virtual EmployeeView EE { get; set; }
 
+        // public string Fullname { get; set; }
+        
         public string CutoffId { get; set; }
 
         public string PayrollCode { get; set; }
+
         public string BankCategory { get; set; }
 
         [JsonProperty("total_hours")]
@@ -51,11 +55,11 @@ namespace Payroll.Timesheets.Domain
         [JsonProperty("is_confirmed")]
         public bool IsConfirmed { get; set; }
 
-
-
         public int Page { get; set; }
 
         public DateTime DateCreated { get; set; }
+        #endregion 
+
 
     }
 }
