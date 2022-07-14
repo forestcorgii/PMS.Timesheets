@@ -15,11 +15,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Payroll.Timesheets.BizLogic\Payroll.Timesheets.BizLogic.csproj" />
     <ProjectReference Include="..\Payroll.Timesheets.Domain\Payroll.Timesheets.Domain.csproj" />
     <ProjectReference Include="..\Payroll.Timesheets.Persistence\Payroll.Timesheets.Persistence.csproj" />
+    <ProjectReference Include="..\Payroll.Timesheets.ServiceLayer.EfCore\Payroll.Timesheets.ServiceLayer.EfCore.csproj" />
     <ProjectReference Include="..\Payroll.Timesheets.ServiceLayer.Outputs\Payroll.Timesheets.ServiceLayer.Outputs.csproj" />
     <ProjectReference Include="..\Payroll.Timesheets.ServiceLayer.TimeSystem\Payroll.Timesheets.ServiceLayer.TimeSystem.csproj" />
-    <ProjectReference Include="..\Payroll.Timesheets.ServiceLayer\Payroll.Timesheets.ServiceLayer.EfCore.csproj" />
   </ItemGroup>
  
 

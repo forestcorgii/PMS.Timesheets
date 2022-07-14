@@ -1,5 +1,6 @@
 ﻿using Payroll.Timesheets.Domain;
 using Payroll.Timesheets.Persistence;
+using Payroll.Timesheets.ServiceLayer.EfCore.Queries;
 using Payroll.Timesheets.ServiceLayer.EfCore.QueryObjects;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static Payroll.Timesheets.ServiceLayer.EfCore.Queries.OrderByExt;
 
-namespace Payroll.Timesheets.ServiceLayer.EfCore.Queries
+namespace Payroll.Timesheets.ServiceLayer.EfCore.Concrete
 {
     public class TimesheetPageService
     {

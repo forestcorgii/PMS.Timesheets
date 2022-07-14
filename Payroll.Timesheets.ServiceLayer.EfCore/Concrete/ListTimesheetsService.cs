@@ -1,13 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Payroll.Timesheets.Domain;
 using Payroll.Timesheets.Persistence;
+using Payroll.Timesheets.ServiceLayer.EfCore.Queries;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Payroll.Timesheets.ServiceLayer.EfCore.Queries
+namespace Payroll.Timesheets.ServiceLayer.EfCore.Concrete
 {
     public class ListTimesheetsService
     {
@@ -31,11 +32,7 @@ namespace Payroll.Timesheets.ServiceLayer.EfCore.Queries
 
         public IQueryable<Timesheet> GetTimesheetByCutoffId(string cutoffId, string payrollCode)
         {
-            IQueryable<Timesheet> timesheets = GetTimesheets()
-                .Where(ts =>
-                    ts.CutoffId == cutoffId &&
-                    ts.PayrollCode == payrollCode
-                )
+            IQueryable<Timesheet> timesheets = GetTimesheets().FilterBy(cutoffId,payrollCode)
                 .OrderBy(ts => ts.IsConfirmed)
                 .ThenByDescending(ts => ts.TotalHours);
 

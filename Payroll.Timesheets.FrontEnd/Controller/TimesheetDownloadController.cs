@@ -1,7 +1,7 @@
-﻿using Payroll.Timesheets.Domain;
+﻿using Payroll.Timesheets.BizLogic.Concrete;
+using Payroll.Timesheets.Domain;
 using Payroll.Timesheets.Domain.SupportTypes;
 using Payroll.Timesheets.Persistence;
-using Payroll.Timesheets.ServiceLayer.EfCore.Commands;
 using Payroll.Timesheets.ServiceLayer.TimeSystem.Adapter;
 using Payroll.Timesheets.ServiceLayer.TimeSystem.Services;
 using System;
@@ -95,7 +95,7 @@ namespace Payroll.Timesheets.FrontEnd.Controller
                 DownloadContent<Timesheet>? timesheets = await service.DownloadTimesheets(cutoff.CutoffRange, payrollCode, page);
                 if (timesheets is not null && timesheets.message is not null)
                 {
-                    WriteTimesheetService writeService = new(Context);
+                    SaveTimesheetBizLogic writeService = new(Context);
                     foreach (Timesheet timesheet in timesheets.message)
                     {
                         timesheet.CutoffId = cutoff.CutoffId;
@@ -103,9 +103,8 @@ namespace Payroll.Timesheets.FrontEnd.Controller
                         timesheet.BankCategory = bankCategory;
                         timesheet.Page = page;
                         timesheet.TimesheetId = $"{timesheet.EEId}_{timesheet.CutoffId}";
-                        writeService.CreateOrUpdate(timesheet);
+                        writeService.SaveTimesheet(timesheet,cutoff.CutoffId,payrollCode,page);
                     }
-                    writeService.SaveChanges();
                     PageDownload?.Invoke(this, page);
                 }
             }
