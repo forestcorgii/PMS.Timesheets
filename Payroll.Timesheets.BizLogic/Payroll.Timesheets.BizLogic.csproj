@@ -5,10 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Concrete\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\Payroll.Timesheets.BizDbAccess\Payroll.Timesheets.BizDbAccess.csproj" />
     <ProjectReference Include="..\Payroll.Timesheets.Domain\Payroll.Timesheets.Domain.csproj" />
   </ItemGroup>
 
