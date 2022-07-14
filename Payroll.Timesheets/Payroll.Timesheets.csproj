@@ -1,20 +1,12 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <Description>test</Description>
+    <Authors>Sean Ivan Fernandez</Authors>
+    <Version>1.0.1</Version>
+    <ApplicationIcon />
   </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Payroll.Timesheets.BizDbAccess\Payroll.Timesheets.BizDbAccess.csproj" />
-    <ProjectReference Include="..\Payroll.Timesheets.BizLogic\Payroll.Timesheets.BizLogic.csproj" />
-    <ProjectReference Include="..\Payroll.Timesheets.Domain\Payroll.Timesheets.Domain.csproj" />
-    <ProjectReference Include="..\Payroll.Timesheets.FrontEnd\Payroll.Timesheets.FrontEnd.csproj" />
-    <ProjectReference Include="..\Payroll.Timesheets.Infrastructure.Common\Payroll.Timesheets.Infrastructure.csproj" />
-    <ProjectReference Include="..\Payroll.Timesheets.Persistence\Payroll.Timesheets.Persistence.csproj" />
-    <ProjectReference Include="..\Payroll.Timesheets.ServiceLayer.Common\Payroll.Timesheets.ServiceLayer.Common.csproj" />
-    <ProjectReference Include="..\Payroll.Timesheets.ServiceLayer.Outputs\Payroll.Timesheets.ServiceLayer.Outputs.csproj" />
-    <ProjectReference Include="..\Payroll.Timesheets.ServiceLayer.TimeSystem\Payroll.Timesheets.ServiceLayer.TimeSystem.csproj" />
-    <ProjectReference Include="..\Payroll.Timesheets.ServiceLayer\Payroll.Timesheets.ServiceLayer.EfCore.csproj" />
-  </ItemGroup>
+ 
 
 </Project>

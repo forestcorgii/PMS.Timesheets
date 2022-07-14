@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Payroll.Timesheets</id>
+    <version>1.0.0-preview002</version>
+    <authors>you must give a list of author(s)</authors>
+    <description>you must provide a description of the NuGet</description>
+    <releaseNotes>optional: what is changed in this release?</releaseNotes>
+    <dependencies>
+      <group targetFramework="net5.0">
+        <dependency id="Microsoft.EntityFrameworkCore" version="5.0.17" />
+        <dependency id="Newtonsoft.Json" version="13.0.1" />
+        <dependency id="Microsoft.EntityFrameworkCore.Abstractions" version="5.0.17" />
+        <dependency id="Microsoft.EntityFrameworkCore.Design" version="5.0.17" />
+        <dependency id="Microsoft.EntityFrameworkCore.Proxies" version="5.0.17" />
+        <dependency id="Microsoft.EntityFrameworkCore.Relational" version="5.0.17" />
+        <dependency id="MySql.EntityFrameworkCore" version="5.0.13" />
+        <dependency id="dotnetdbf" version="6.0.0.3" />
+        <dependency id="NPOI" version="2.5.6" />
+        <dependency id="Microsoft.Extensions.Configuration" version="6.0.1" />
+        <dependency id="Microsoft.Extensions.Configuration.Binder" version="6.0.0" />
+        <dependency id="Microsoft.Extensions.Configuration.UserSecrets" version="6.0.1" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="..\Payroll.Timesheets\bin\Debug\net5.0\Payroll.Timesheets.dll" target="lib\net5.0" />
+    <file src="..\Payroll.Timesheets\bin\Debug\net5.0\Payroll.Timesheets.pdb" target="lib\net5.0" />
+    <file src="..\Payroll.Timesheets.BizDbAccess\bin\Debug\net5.0\Payroll.Timesheets.BizDbAccess.dll" target="lib\net5.0" />
+    <file src="..\Payroll.Timesheets.BizDbAccess\bin\Debug\net5.0\Payroll.Timesheets.BizDbAccess.pdb" target="lib\net5.0" />
+    <file src="..\Payroll.Timesheets.BizLogic\bin\Debug\net5.0\Payroll.Timesheets.BizLogic.dll" target="lib\net5.0" />
+    <file src="..\Payroll.Timesheets.BizLogic\bin\Debug\net5.0\Payroll.Timesheets.BizLogic.pdb" target="lib\net5.0" />
+    <file src="..\Payroll.Timesheets.Domain\bin\Debug\net5.0\Payroll.Timesheets.Domain.dll" target="lib\net5.0" />
+    <file src="..\Payroll.Timesheets.Domain\bin\Debug\net5.0\Payroll.Timesheets.Domain.pdb" target="lib\net5.0" />
+    <file src="..\Payroll.Timesheets.Persistence\bin\Debug\net5.0\Payroll.Timesheets.Persistence.dll" target="lib\net5.0" />
+    <file src="..\Payroll.Timesheets.Persistence\bin\Debug\net5.0\Payroll.Timesheets.Persistence.pdb" target="lib\net5.0" />
+    <file src="..\Payroll.Timesheets.ServiceLayer.EfCore\bin\Debug\net5.0\Payroll.Timesheets.ServiceLayer.EfCore.dll" target="lib\net5.0" />
+    <file src="..\Payroll.Timesheets.ServiceLayer.EfCore\bin\Debug\net5.0\Payroll.Timesheets.ServiceLayer.EfCore.pdb" target="lib\net5.0" />
+    <file src="..\Payroll.Timesheets.ServiceLayer.Outputs\bin\Debug\net5.0\Payroll.Timesheets.ServiceLayer.Outputs.dll" target="lib\net5.0" />
+    <file src="..\Payroll.Timesheets.ServiceLayer.Outputs\bin\Debug\net5.0\Payroll.Timesheets.ServiceLayer.Outputs.pdb" target="lib\net5.0" />
+    <file src="..\Payroll.Timesheets.ServiceLayer.TimeSystem\bin\Debug\net5.0\Payroll.Timesheets.ServiceLayer.TimeSystem.dll" target="lib\net5.0" />
+    <file src="..\Payroll.Timesheets.ServiceLayer.TimeSystem\bin\Debug\net5.0\Payroll.Timesheets.ServiceLayer.TimeSystem.pdb" target="lib\net5.0" />
+  </files>
+</package>

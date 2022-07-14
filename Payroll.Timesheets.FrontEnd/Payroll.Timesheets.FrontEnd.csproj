@@ -21,26 +21,6 @@
     <ProjectReference Include="..\Payroll.Timesheets.ServiceLayer.TimeSystem\Payroll.Timesheets.ServiceLayer.TimeSystem.csproj" />
     <ProjectReference Include="..\Payroll.Timesheets.ServiceLayer\Payroll.Timesheets.ServiceLayer.EfCore.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Compile Update="FrmTestOutput.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="FrmTestList.cs">
-      <SubType>Form</SubType>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Update="FrmTestDownload - Copy %282%29.resx">
-      <DependentUpon>FrmTestDownload.resx</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="FrmTestDownload - Copy - Copy.resx">
-      <DependentUpon>FrmTestDownload - Copy.resx</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="FrmTestDownload - Copy.resx">
-      <DependentUpon>FrmTestDownload.resx</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
+ 
 
 </Project>

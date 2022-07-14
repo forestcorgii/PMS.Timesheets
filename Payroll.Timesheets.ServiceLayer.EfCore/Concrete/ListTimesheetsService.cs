@@ -21,27 +21,25 @@ namespace Payroll.Timesheets.ServiceLayer.EfCore.Queries
         public IQueryable<Timesheet> GetTimesheets() =>
             Context.Timesheets;
 
-        public IEnumerable<Timesheet> FilterExportableTimesheets(string cutoffId, string payrollCode, string bankCategory)
+        public IQueryable<Timesheet> FilterExportableTimesheets(string cutoffId, string payrollCode, string bankCategory)
         {
-            List<Timesheet> timesheets = GetTimesheets()
-                .FilterByExportable(cutoffId, payrollCode, bankCategory)// .Join<Timesheet,EmployeeView,string,string>(Context.Employees,ts=>ts.EEId,ee=>ee.EEId,(ts,ee,str)=>)
-                .ToList();
+            IQueryable<Timesheet> timesheets = GetTimesheets()
+                .FilterByExportable(cutoffId, payrollCode, bankCategory);// .Join<Timesheet,EmployeeView,string,string>(Context.Employees,ts=>ts.EEId,ee=>ee.EEId,(ts,ee,str)=>)
+            
             return timesheets;
         }
 
-        public IEnumerable<Timesheet> GetTimesheetByPayRegisterId(string cutoffId, string payrollCode)
+        public IQueryable<Timesheet> GetTimesheetByCutoffId(string cutoffId, string payrollCode)
         {
-            List<Timesheet> timesheets = GetTimesheets()
+            IQueryable<Timesheet> timesheets = GetTimesheets()
                 .Where(ts =>
                     ts.CutoffId == cutoffId &&
                     ts.PayrollCode == payrollCode
                 )
                 .OrderBy(ts => ts.IsConfirmed)
-                .ThenByDescending(ts => ts.TotalHours)
-                .ToList();
+                .ThenByDescending(ts => ts.TotalHours);
 
             return timesheets;
         }
-
     }
 }

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
@@ -6,10 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Payroll.Timesheets.Domain\Payroll.Timesheets.Domain.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Concrete\" />
+    <ProjectReference Include="..\Payroll.Timesheets.Persistence\Payroll.Timesheets.Persistence.csproj" />
   </ItemGroup>
 
 </Project>
