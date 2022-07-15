@@ -25,20 +25,37 @@ namespace Payroll.Timesheets.ServiceLayer.EfCore.Concrete
 
             if (timesheets.Count() > 0)
                 return timesheets.Max(ts => ts.Page);
-            
+
             return 0;
         }
 
         public List<int> GetPageWithUnconfirmedTS(string cutoffId, string payrollCode)
         {
             IQueryable<Timesheet> timesheets = Context.Timesheets.FilterBy(cutoffId, payrollCode);
-            
+
             timesheets = timesheets.Where(ts =>
                 !ts.IsConfirmed &&
                 ts.TotalHours > 0
             );
 
             return timesheets.GroupByPage();
+        }
+
+        public List<int> GetPages(string cutoffId, string payrollCode) =>
+            Context.Timesheets
+                .FilterBy(cutoffId, payrollCode)
+                .GroupByPage();
+
+        public List<int> GetMissingPages(string cutoffId, string payrollCode)
+        {
+            List<int> pages = Context.Timesheets
+                .FilterBy(cutoffId, payrollCode)
+                .GroupByPage();
+            List<int> assumedPages = Enumerable.Range(0, pages.Max()).ToList();
+
+            if (pages.Count > assumedPages.Count)
+                return assumedPages.Except(pages).ToList();
+            return null;
         }
 
     }
