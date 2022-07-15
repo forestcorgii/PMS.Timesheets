@@ -1,6 +1,7 @@
 ﻿using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
 using Payroll.Timesheets.Domain;
+using Payroll.Timesheets.Domain.SupportTypes;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -10,39 +11,56 @@ using System.Threading.Tasks;
 
 namespace Payroll.Timesheets.ServiceLayer.Outputs
 {
-    class ExportTimesheetsEfileService
+    public class ExportTimesheetsEfileService
     {
+        private Cutoff Cutoff { get; set; }
+        private string PayrollCode { get; set; }
+        private string BankCategory { get; set; }
+        private List<Timesheet> Timesheets { get; set; }
+        private List<Timesheet> UnconfirmedTimesheetsWithAttendance { get; set; }
+        private List<Timesheet> UnconfirmedTimesheetsWithoutAttendance { get; set; }
 
-        private void ExportEFile(string location, DateTime[] cutoffRange, string payroll_code, string bank_category, List<Timesheet> timesheets)
+        public ExportTimesheetsEfileService(Cutoff cutoff, string payrollCode, string bankCategory, List<Timesheet> timesheets, List<Timesheet> unconfirmedTimesheetsWithAttendance, List<Timesheet> unconfirmedTimesheetsWithoutAttendance)
         {
-            if (timesheets.Count() == 0) return;
+            Cutoff = cutoff;
+            PayrollCode = payrollCode;
+            BankCategory = bankCategory;
+            Timesheets = timesheets;
+            UnconfirmedTimesheetsWithAttendance = unconfirmedTimesheetsWithAttendance;
+            UnconfirmedTimesheetsWithoutAttendance = unconfirmedTimesheetsWithoutAttendance;
+        }
 
-            var nWorkbook = new HSSFWorkbook();
-            var nSheet = nWorkbook.CreateSheet("Sheet1");
+        public void ExportEFile(string filePath)
+        {
+            if (Timesheets.Count == 0) return;
 
-            var nRow = nSheet.CreateRow(0);
-            nRow.CreateCell(2).SetCellValue($"{payroll_code} - {bank_category}");
+            IWorkbook nWorkbook = new HSSFWorkbook();
+            ISheet nSheet = nWorkbook.CreateSheet("Sheet1");
+            WritePayRegisterInfo(nSheet);
+            WriteHeader(nSheet);
 
-            nRow = nSheet.CreateRow(1);
-            nRow.CreateCell(2).SetCellValue($"{cutoffRange[0]:MMMM d} - {cutoffRange[1]:MMMM dd, yyyy}");
+            int currentRowIndex = 3;
+            currentRowIndex = WriteTimesheets(Timesheets, nSheet, currentRowIndex);
+            currentRowIndex = WriteTimesheets(UnconfirmedTimesheetsWithAttendance, nSheet, currentRowIndex, "UNCONFIRMED TIMESHEETS(WITH ATTENDANCE)");
+            _ = WriteTimesheets(UnconfirmedTimesheetsWithoutAttendance, nSheet, currentRowIndex, "UNCONFIRMED TIMESHEETS(WITHOUT ATTENDANCE)");
 
-            nRow = nSheet.CreateRow(3);
-            WriteHeader(nRow);
-
-            for (int r = 0, loopTo = timesheets.Count - 1; r <= loopTo; r++)
-            {
-                nRow = nSheet.CreateRow(4 + r);
-                nRow.CreateCell(0).SetCellValue(r + 1);
-                WriteEERow(nRow, timesheets[r]);
-            }
-
-            using var nEFile = new FileStream(location, FileMode.Create, FileAccess.Write);
+            using var nEFile = new FileStream(filePath, FileMode.Create, FileAccess.Write);
             nWorkbook.Write(nEFile);
         }
 
 
-        public void WriteHeader(IRow row)
+        private void WritePayRegisterInfo(ISheet nSheet)
         {
+            IRow nRow = nSheet.CreateRow(0);
+            nRow.CreateCell(2).SetCellValue($"{PayrollCode} - {BankCategory}");
+
+            nRow = nSheet.CreateRow(1);
+            nRow.CreateCell(2).SetCellValue($"{Cutoff.CutoffRange[0]:MMMM d} - {Cutoff.CutoffRange[1]:MMMM dd, yyyy}");
+        }
+
+        private static void WriteHeader(ISheet nSheet)
+        {
+            IRow row = nSheet.CreateRow(3);
             row.CreateCell(0).SetCellValue("#");
             row.CreateCell(1).SetCellValue("# ID");
             row.CreateCell(2).SetCellValue("NAME");
@@ -56,7 +74,25 @@ namespace Payroll.Timesheets.ServiceLayer.Outputs
             row.CreateCell(10).SetCellValue("ALLOWANCE");
         }
 
-        public void WriteEERow(IRow row, Timesheet timesheet)
+        private int WriteTimesheets(List<Timesheet> timesheets, ISheet sheet, int currentRowIndex, string header = "")
+        {
+            IRow row;
+            currentRowIndex++;
+            currentRowIndex++;
+            sheet.CreateRow(currentRowIndex).CreateCell(0).SetCellValue(header);
+            currentRowIndex++;
+
+            for (int r = 0, loopTo = timesheets.Count - 1; r <= loopTo; r++)
+            {
+                row = sheet.CreateRow(currentRowIndex + r);
+                row.CreateCell(0).SetCellValue(r + 1);
+                WriteEERow(row, timesheets[r]);
+            }
+
+            return currentRowIndex += timesheets.Count;
+        }
+
+        private static void WriteEERow(IRow row, Timesheet timesheet)
         {
             row.CreateCell(1).SetCellValue(timesheet.EEId);
             row.CreateCell(2).SetCellValue(timesheet.EE.Fullname);

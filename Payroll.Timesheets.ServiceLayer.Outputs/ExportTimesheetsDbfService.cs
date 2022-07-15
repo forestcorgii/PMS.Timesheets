@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Payroll.Timesheets.ServiceLayer.Outputs
 {
-    class ExportTimesheetsDbfService
+    public class ExportTimesheetsDbfService
     {
-        private void ExportDBF(string location, DateTime payrollDate, List<Timesheet> timesheets)
+        public void ExportDBF(string location, DateTime payrollDate, List<Timesheet> timesheets)
         {
             if (timesheets.Count() > 0)
             {
@@ -32,7 +32,7 @@ namespace Payroll.Timesheets.ServiceLayer.Outputs
         }
 
 
-        public string[] ToDBFRecordFormat(Timesheet timesheet, int CODE, int DATER) =>
+        private string[] ToDBFRecordFormat(Timesheet timesheet, int CODE, int DATER) =>
            new[] { DATER.ToString(),
                     CODE.ToString(),
                     timesheet.EEId,
