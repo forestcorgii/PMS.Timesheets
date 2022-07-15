@@ -98,11 +98,6 @@ namespace Payroll.Timesheets.FrontEnd.Controller
                     SaveTimesheetBizLogic writeService = new(Context);
                     foreach (Timesheet timesheet in timesheets.message)
                     {
-                        timesheet.CutoffId = cutoff.CutoffId;
-                        timesheet.PayrollCode = payrollCode;
-                        timesheet.BankCategory = bankCategory;
-                        timesheet.Page = page;
-                        timesheet.TimesheetId = $"{timesheet.EEId}_{timesheet.CutoffId}";
                         writeService.SaveTimesheet(timesheet,cutoff.CutoffId,payrollCode,page);
                     }
                     PageDownload?.Invoke(this, page);
