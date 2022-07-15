@@ -18,23 +18,35 @@ namespace Payroll.Timesheets.ServiceLayer.EfCore.Concrete
             Context = context;
         }
 
-
         public IQueryable<Timesheet> GetTimesheets() =>
             Context.Timesheets;
 
-        public IQueryable<Timesheet> FilterExportableTimesheets(string cutoffId, string payrollCode, string bankCategory)
+        public IQueryable<Timesheet> GetTimesheetsAsExportable(string cutoffId, string payrollCode, string bankCategory)
         {
-            IQueryable<Timesheet> timesheets = GetTimesheets()
-                .FilterByExportable(cutoffId, payrollCode, bankCategory);// .Join<Timesheet,EmployeeView,string,string>(Context.Employees,ts=>ts.EEId,ee=>ee.EEId,(ts,ee,str)=>)
+            IQueryable<Timesheet> timesheets = 
+                GetTimesheets()
+                    .FilterByExportable(cutoffId, payrollCode, bankCategory);
             
             return timesheets;
         }
 
-        public IQueryable<Timesheet> GetTimesheetByCutoffId(string cutoffId, string payrollCode)
+        public IQueryable<Timesheet> GetTimesheetsByCutoffId(string cutoffId, string payrollCode)
         {
-            IQueryable<Timesheet> timesheets = GetTimesheets().FilterBy(cutoffId,payrollCode)
-                .OrderBy(ts => ts.IsConfirmed)
-                .ThenByDescending(ts => ts.TotalHours);
+            IQueryable<Timesheet> timesheets = 
+                GetTimesheets()
+                    .FilterBy(cutoffId,payrollCode)
+                    .OrderBy(ts => ts.IsConfirmed)
+                    .ThenByDescending(ts => ts.TotalHours);
+
+            return timesheets;
+        }
+
+        public IQueryable<Timesheet> GetTimesheetNoEETimesheet(string cutoffId, string payrollCode)
+        {
+            IQueryable<Timesheet> timesheets = 
+                GetTimesheets()
+                    .FilterBy(cutoffId, payrollCode)
+                    .Where(ts => ts.EE == null);
 
             return timesheets;
         }
