@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Pms.Timesheets.Domain\Pms.Timesheets.Domain.csproj" />
+    <ProjectReference Include="..\Pms.Timesheets.Persistence\Pms.Timesheets.Persistence.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <UserSecretsId>db45d1bf-b2a0-4f5b-83d5-0cddb06145b3</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="6.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Pms.Timesheets.BizLogic\Pms.Timesheets.BizLogic.csproj" />
+    <ProjectReference Include="..\Pms.Timesheets.Domain\Pms.Timesheets.Domain.csproj" />
+    <ProjectReference Include="..\Pms.Timesheets.Persistence\Pms.Timesheets.Persistence.csproj" />
+    <ProjectReference Include="..\Pms.Timesheets.ServiceLayer.EfCore\Pms.Timesheets.ServiceLayer.EfCore.csproj" />
+    <ProjectReference Include="..\Pms.Timesheets.ServiceLayer.Outputs\Pms.Timesheets.ServiceLayer.Outputs.csproj" />
+    <ProjectReference Include="..\Pms.Timesheets.ServiceLayer.TimeSystem\Pms.Timesheets.ServiceLayer.TimeSystem.csproj" />
+  </ItemGroup>
+ 
+
+</Project>
