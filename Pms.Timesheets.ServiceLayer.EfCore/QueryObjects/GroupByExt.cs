@@ -9,7 +9,7 @@ namespace Pms.Timesheets.ServiceLayer.EfCore.QueryObjects
 {
     static class GroupByExt
     {
-        public static List<int> GroupByPage(this IQueryable<Timesheet> timesheets) =>
+        public static List<int> GroupByPage(this IEnumerable<Timesheet> timesheets) =>
             timesheets
                 .GroupBy(ts => ts.Page, ts => ts.Page)
                 .Select((page, i) => page.First())
