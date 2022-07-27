@@ -19,16 +19,27 @@ namespace Pms.Timesheets.BizLogic.Concrete
             DbAccess = new(context);
         }
 
-
-        public void SaveTimesheet(Timesheet timesheet, string cutoffId, string payrollCode, int page)
+        public void SaveTimesheet(Timesheet timesheet, string cutoffId, int page)
         {
             timesheet.CutoffId = cutoffId;
-            timesheet.PayrollCode = payrollCode;
             timesheet.Page = page;
             timesheet.TimesheetId = $"{timesheet.EEId}_{timesheet.CutoffId}";
 
             DbAccess.CreateOrUpdate(timesheet);
         }
- 
+        public void SaveTimesheetEmployeeData(Timesheet timesheet)
+        {
+            if (timesheet.EE is not null)
+            {
+                EmployeeView ee = timesheet.EE;
+                timesheet.PayrollCode = ee.PayrollCode;
+                timesheet.BankCategory = ee.BankCategory;
+                timesheet.Fullname = ee.Fullname;
+                timesheet.Location = ee.Location;
+
+                DbAccess.CreateOrUpdate(timesheet, false);
+            }
+        }
+
     }
 }
