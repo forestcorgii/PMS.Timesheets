@@ -23,7 +23,7 @@ namespace Pms.Timesheets.Domain.SupportTypes
         public Cutoff(string cutoffId)
         {
             CutoffId = cutoffId;
-            
+
             GetCutoffDate();
             GetCutoffRange();
         }
@@ -37,7 +37,7 @@ namespace Pms.Timesheets.Domain.SupportTypes
             if (dayIdx == 2)
                 day = DateTime.DaysInMonth(year, month);
 
-            CutoffDate = new DateTime(year, month, day);
+            CutoffDate = new DateTime(year + 2000, month, day); // update year to 3000 at the end of the millennium
         }
 
         private void GetCutoffId()
@@ -50,7 +50,7 @@ namespace Pms.Timesheets.Domain.SupportTypes
 
         private void GetCutoffRange()
         {
-            if (new[] { 28, 29, 30 }.Contains(CutoffDate.Day))
+            if (new[] { 28, 29, 30, 31 }.Contains(CutoffDate.Day))
                 CutoffRange = new[] { new DateTime(CutoffDate.Year, CutoffDate.Month, 5), new DateTime(CutoffDate.Year, CutoffDate.Month, 19) };
             else if (15 == CutoffDate.Day)
             {
