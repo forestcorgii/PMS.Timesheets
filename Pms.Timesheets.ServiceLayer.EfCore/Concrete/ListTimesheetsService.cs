@@ -16,6 +16,7 @@ namespace Pms.Timesheets.ServiceLayer.EfCore.Concrete
         public ListTimesheetsService(TimesheetDbContext context)
         {
             Context = context;
+            Context.Employees.Load();
         }
 
         public IQueryable<Timesheet> GetTimesheets() =>
@@ -32,21 +33,32 @@ namespace Pms.Timesheets.ServiceLayer.EfCore.Concrete
 
         public IQueryable<Timesheet> GetTimesheetsByCutoffId(string cutoffId, string payrollCode)
         {
-            IQueryable<Timesheet> timesheets = 
+            IQueryable<Timesheet> timesheets =
                 GetTimesheets()
-                    .FilterBy(cutoffId,payrollCode)
+                    .FilterBy(cutoffId, payrollCode)
                     .OrderBy(ts => ts.IsConfirmed)
                     .ThenByDescending(ts => ts.TotalHours);
 
             return timesheets;
         }
 
-        public IQueryable<Timesheet> GetTimesheetNoEETimesheet(string cutoffId, string payrollCode)
+        public IQueryable<Timesheet> GetTimesheetsByCutoffId(string cutoffId)
         {
-            IQueryable<Timesheet> timesheets = 
+            IQueryable<Timesheet> timesheets =
                 GetTimesheets()
-                    .FilterBy(cutoffId, payrollCode)
-                    .Where(ts => ts.EE == null);
+                    .FilterBy(cutoffId)
+                    .OrderBy(ts => ts.IsConfirmed)
+                    .ThenByDescending(ts => ts.TotalHours);
+
+            return timesheets;
+        }
+
+        public IEnumerable<Timesheet> GetTimesheetNoEETimesheet(string cutoffId)
+        {
+            IEnumerable<Timesheet> timesheets = 
+                GetTimesheets()
+                    .FilterBy(cutoffId).ToList()
+                    .Where(ts => ts.EE == default);
 
             return timesheets;
         }
