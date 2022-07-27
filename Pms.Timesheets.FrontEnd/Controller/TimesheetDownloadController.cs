@@ -98,7 +98,7 @@ namespace Pms.Timesheets.FrontEnd.Controller
                     SaveTimesheetBizLogic writeService = new(Context);
                     foreach (Timesheet timesheet in timesheets.message)
                     {
-                        writeService.SaveTimesheet(timesheet,cutoff.CutoffId,payrollCode,page);
+                        //writeService.SaveTimesheet(timesheet,cutoff.CutoffId,payrollCode,page);
                     }
                     PageDownload?.Invoke(this, page);
                 }
