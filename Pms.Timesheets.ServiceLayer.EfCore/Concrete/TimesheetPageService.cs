@@ -49,12 +49,16 @@ namespace Pms.Timesheets.ServiceLayer.EfCore.Concrete
         public List<int> GetMissingPages(string cutoffId, string payrollCode)
         {
             List<int> pages = Context.Timesheets
-                .FilterBy(cutoffId, payrollCode)
+                .FilterBy(cutoffId, payrollCode).ToList()
                 .GroupByPage();
-            List<int> assumedPages = Enumerable.Range(0, pages.Max()).ToList();
-
-            if (pages.Count > assumedPages.Count)
-                return assumedPages.Except(pages).ToList();
+            
+            if (pages.Count > 0)
+            {
+                List<int> assumedPages = Enumerable.Range(0, pages.Max()).ToList();
+                if (pages.Count > assumedPages.Count)
+                    return assumedPages.Except(pages).ToList();
+            }
+            
             return null;
         }
 
