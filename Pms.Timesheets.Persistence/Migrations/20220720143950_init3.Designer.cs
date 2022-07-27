@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Pms.Timesheets.Persistence;
 
 namespace Pms.Timesheets.Persistence.Migrations
 {
     [DbContext(typeof(TimesheetDbContext))]
-    partial class TimesheetDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220720143950_init3")]
+    partial class init3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -22,9 +24,6 @@ namespace Pms.Timesheets.Persistence.Migrations
                     b.Property<string>("EEId")
                         .HasColumnType("VARCHAR(8)");
 
-                    b.Property<string>("BankCategory")
-                        .HasColumnType("VARCHAR(45)");
-
                     b.Property<string>("FirstName")
                         .HasColumnType("VARCHAR(45)");
 
@@ -35,9 +34,6 @@ namespace Pms.Timesheets.Persistence.Migrations
                         .HasColumnType("VARCHAR(45)");
 
                     b.Property<string>("MiddleName")
-                        .HasColumnType("VARCHAR(45)");
-
-                    b.Property<string>("PayrollCode")
                         .HasColumnType("VARCHAR(45)");
 
                     b.HasKey("EEId");
@@ -56,6 +52,7 @@ namespace Pms.Timesheets.Persistence.Migrations
                         .HasColumnType("DOUBLE(8,2)");
 
                     b.Property<string>("BankCategory")
+                        .IsRequired()
                         .HasColumnType("VARCHAR(6)");
 
                     b.Property<string>("CutoffId")
@@ -71,19 +68,17 @@ namespace Pms.Timesheets.Persistence.Migrations
                         .HasColumnType("VARCHAR(8)");
 
                     b.Property<string>("Fullname")
-                        .HasColumnType("VARCHAR(60)");
+                        .HasColumnType("text");
 
-                    b.Property<byte>("IsConfirmed")
-                        .HasColumnType("TINYINT");
-
-                    b.Property<string>("Location")
-                        .HasColumnType("VARCHAR(50)");
+                    b.Property<double>("IsConfirmed")
+                        .HasColumnType("DOUBLE(8,2)");
 
                     b.Property<byte>("Page")
                         .HasColumnType("TINYINT")
                         .HasComment("Time System API Page");
 
                     b.Property<string>("PayrollCode")
+                        .IsRequired()
                         .HasColumnType("VARCHAR(6)");
 
                     b.Property<string>("RawPCV")

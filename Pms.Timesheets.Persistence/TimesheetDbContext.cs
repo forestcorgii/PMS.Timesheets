@@ -11,10 +11,10 @@ namespace Pms.Timesheets.Persistence
         public DbSet<EmployeeView> Employees => Set<EmployeeView>();
 
         private readonly string ConnectionString = "server=localhost;database=payroll2_efdb;user=root;password=Soft1234;";
-        
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySQL(ConnectionString, options => 
+            optionsBuilder.UseMySQL(ConnectionString, options =>
                 options.MigrationsHistoryTable("TimesheetsMigrationHistoryName"))
             .UseLazyLoadingProxies();
         }
@@ -34,8 +34,7 @@ namespace Pms.Timesheets.Persistence
                         e.State == EntityState.Modified)
                     );
             foreach (var entityEntry in timesheetEntries)
-                if (entityEntry.State == EntityState.Added)
-                    ((Timesheet)entityEntry.Entity).DateCreated = DateTime.Now;
+                ((Timesheet)entityEntry.Entity).DateCreated = DateTime.Now;
 
             return base.SaveChanges();
         }

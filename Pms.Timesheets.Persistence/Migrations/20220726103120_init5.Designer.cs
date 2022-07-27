@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Pms.Timesheets.Persistence;
 
 namespace Pms.Timesheets.Persistence.Migrations
 {
     [DbContext(typeof(TimesheetDbContext))]
-    partial class TimesheetDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220726103120_init5")]
+    partial class init5
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -73,8 +75,8 @@ namespace Pms.Timesheets.Persistence.Migrations
                     b.Property<string>("Fullname")
                         .HasColumnType("VARCHAR(60)");
 
-                    b.Property<byte>("IsConfirmed")
-                        .HasColumnType("TINYINT");
+                    b.Property<double>("IsConfirmed")
+                        .HasColumnType("DOUBLE(8,2)");
 
                     b.Property<string>("Location")
                         .HasColumnType("VARCHAR(50)");
