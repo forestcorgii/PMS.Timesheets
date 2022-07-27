@@ -95,8 +95,11 @@ namespace Pms.Timesheets.ServiceLayer.Outputs
         private static void WriteEERow(IRow row, Timesheet timesheet)
         {
             row.CreateCell(1).SetCellValue(timesheet.EEId);
-            row.CreateCell(2).SetCellValue(timesheet.EE.Fullname);
-            row.CreateCell(3).SetCellValue(timesheet.EE.Location);
+            if (timesheet.EE is not null)
+            {
+                row.CreateCell(2).SetCellValue(timesheet.EE.Fullname);
+                row.CreateCell(3).SetCellValue(timesheet.EE.Location);
+            }
             row.CreateCell(4).SetCellValue(timesheet.TotalHours);
             row.CreateCell(5).SetCellValue(timesheet.TotalOT);
             row.CreateCell(6).SetCellValue(timesheet.TotalRDOT);
