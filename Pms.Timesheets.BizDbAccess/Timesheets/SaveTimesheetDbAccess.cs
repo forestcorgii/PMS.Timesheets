@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Pms.Timesheets.BizDbAccess.Timesheets
 {
-    public class SaveTimesheetDbAccess 
+    public class SaveTimesheetDbAccess
     {
         TimesheetDbContext Context;
         public SaveTimesheetDbAccess(TimesheetDbContext context)
@@ -17,14 +17,15 @@ namespace Pms.Timesheets.BizDbAccess.Timesheets
             Context = context;
         }
 
-        public void CreateOrUpdate(Timesheet timesheet)
+        public void CreateOrUpdate(Timesheet timesheet, bool save = true)
         {
             Timesheet timesheetFound = Context.Timesheets.Where(ts => ts.TimesheetId == timesheet.TimesheetId).FirstOrDefault();
             if (timesheetFound is null)
                 Context.Add(timesheet);
             else
-                Context.Entry(timesheet).CurrentValues.SetValues(timesheet);
-            Context.SaveChanges();
+                Context.Entry(timesheetFound).CurrentValues.SetValues(timesheet);
+
+            if (save) Context.SaveChanges();
         }
     }
 }
