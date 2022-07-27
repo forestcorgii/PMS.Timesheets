@@ -17,13 +17,15 @@ namespace Pms.Timesheets.Domain
         public string EEId { get; set; }
         public virtual EmployeeView EE { get; set; }
 
-        // public string Fullname { get; set; }
-        
+        public string Fullname { get; set; } = "";
+
         public string CutoffId { get; set; }
 
-        public string PayrollCode { get; set; }
+        public string PayrollCode { get; set; } = "";
 
-        public string BankCategory { get; set; }
+        public string BankCategory { get; set; } = "";
+        
+        public string Location { get; set; } = "";
 
         [JsonProperty("total_hours")]
         public double TotalHours { get; set; }
