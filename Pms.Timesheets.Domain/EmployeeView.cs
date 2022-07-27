@@ -17,6 +17,10 @@ namespace Pms.Timesheets.Domain
         public string MiddleName { get; private set; }
 
         public string Location { get; private set; }
+        
+        public string PayrollCode { get; private set; }
+
+        public string BankCategory { get; private set; }
 
         public string Fullname
         {
