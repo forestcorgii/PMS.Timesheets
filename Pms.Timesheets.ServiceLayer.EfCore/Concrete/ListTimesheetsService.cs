@@ -2,6 +2,7 @@
 using Pms.Timesheets.Domain;
 using Pms.Timesheets.Persistence;
 using Pms.Timesheets.ServiceLayer.EfCore.Queries;
+using Pms.Timesheets.ServiceLayer.EfCore.QueryObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,48 +20,53 @@ namespace Pms.Timesheets.ServiceLayer.EfCore.Concrete
             Context.Employees.Load();
         }
 
-        public IQueryable<Timesheet> GetTimesheets() =>
+        public IEnumerable<Timesheet> GetTimesheets() =>
             Context.Timesheets;
+         
 
-        public IQueryable<Timesheet> GetTimesheetsAsExportable(string cutoffId, string payrollCode, string bankCategory)
+        public IEnumerable<Timesheet> GetTimesheetsByCutoffId(string cutoffId)
         {
-            IQueryable<Timesheet> timesheets = 
+            IEnumerable<Timesheet> timesheets =
                 GetTimesheets()
-                    .FilterByExportable(cutoffId, payrollCode, bankCategory);
-            
-            return timesheets;
-        }
-
-        public IQueryable<Timesheet> GetTimesheetsByCutoffId(string cutoffId, string payrollCode)
-        {
-            IQueryable<Timesheet> timesheets =
-                GetTimesheets()
-                    .FilterBy(cutoffId, payrollCode)
-                    .OrderBy(ts => ts.IsConfirmed)
-                    .ThenByDescending(ts => ts.TotalHours);
+                    .FilterBy(cutoffId);
 
             return timesheets;
         }
-
-        public IQueryable<Timesheet> GetTimesheetsByCutoffId(string cutoffId)
+        public IEnumerable<Timesheet> GetTimesheetsByCutoffId(string cutoffId, string payrollCode)
         {
-            IQueryable<Timesheet> timesheets =
+            IEnumerable<Timesheet> timesheets =
                 GetTimesheets()
-                    .FilterBy(cutoffId)
-                    .OrderBy(ts => ts.IsConfirmed)
-                    .ThenByDescending(ts => ts.TotalHours);
+                    .FilterBy(cutoffId, payrollCode);
 
             return timesheets;
         }
+        public IEnumerable<Timesheet> GetTimesheetsByCutoffId(string cutoffId, string payrollCode, string bankCategory)
+        {
+            IEnumerable<Timesheet> timesheets =
+                Context.Timesheets.ToList()
+                    .FilterBy(cutoffId, payrollCode, bankCategory);
+
+            return timesheets;
+        }
+
+
 
         public IEnumerable<Timesheet> GetTimesheetNoEETimesheet(string cutoffId)
         {
-            IEnumerable<Timesheet> timesheets = 
+            IEnumerable<Timesheet> timesheets =
                 GetTimesheets()
                     .FilterBy(cutoffId).ToList()
                     .Where(ts => ts.EE == default);
 
             return timesheets;
         }
+
+
+
+        //public List<string> ListTimesheetPayrollCodes() =>
+        //    GetTimesheets().ExtractPayrollCodes();
+
+        public List<string> ListTimesheetBankCategory(string payrollCode) =>
+            GetTimesheets().ExtractBankCategories(payrollCode);
     }
 }
