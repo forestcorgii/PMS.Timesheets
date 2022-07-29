@@ -9,7 +9,7 @@ namespace Pms.Timesheets.ServiceLayer.EfCore.Queries
 {
     public static class OrderByExt
     {
-        public static IQueryable<Timesheet> OrderByTotalHours(this IQueryable<Timesheet> timesheets, OrderType orderType)
+        public static IEnumerable<Timesheet> OrderByTotalHours(this IEnumerable<Timesheet> timesheets, OrderType orderType)
         {
             switch (orderType)
             {
@@ -21,6 +21,13 @@ namespace Pms.Timesheets.ServiceLayer.EfCore.Queries
             return timesheets;
         }
 
-        public enum OrderType { Ascending, Descending }
+        public static IEnumerable<Timesheet> OrderByPriority(this IEnumerable<Timesheet> timesheets)
+        {
+            return timesheets.OrderBy(ts => ts.TotalHours)
+                .OrderBy(ts => ts.IsConfirmed)
+                .ThenByDescending(ts => ts.TotalHours);
+        }
+
+        public enum OrderType { Ascending, Descending}
     }
 }
