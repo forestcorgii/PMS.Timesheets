@@ -25,8 +25,21 @@ namespace Pms.Timesheets.BizLogic.Concrete
             timesheet.Page = page;
             timesheet.TimesheetId = $"{timesheet.EEId}_{timesheet.CutoffId}";
 
+            timesheet.RawPCV = ToRawPCV(timesheet.PCV);
+
             DbAccess.CreateOrUpdate(timesheet);
         }
+
+        private string ToRawPCV(string[][] pcv)
+        {
+            string[] to1D = new string[pcv.Length];
+
+            for (int i = 0; i < pcv.Length; i++)
+                to1D[i] = string.Join('_', pcv[i]);
+            return string.Join(',',to1D);
+        }
+
+
         public void SaveTimesheetEmployeeData(Timesheet timesheet)
         {
             if (timesheet.EE is not null)
