@@ -19,7 +19,7 @@ namespace Pms.Timesheets.ServiceLayer.EfCore.Concrete
 
         public int GetLastPage(string cutoffId, string payrollCode)
         {
-            IQueryable<Timesheet> timesheets = Context.Timesheets
+            IEnumerable<Timesheet> timesheets = Context.Timesheets
                 .OrderByTotalHours(OrderType.Descending)
                 .FilterBy(cutoffId, payrollCode);
 
@@ -31,7 +31,7 @@ namespace Pms.Timesheets.ServiceLayer.EfCore.Concrete
 
         public List<int> GetPageWithUnconfirmedTS(string cutoffId, string payrollCode)
         {
-            IQueryable<Timesheet> timesheets = Context.Timesheets.FilterBy(cutoffId, payrollCode);
+            IEnumerable<Timesheet> timesheets = Context.Timesheets.FilterBy(cutoffId, payrollCode);
 
             timesheets = timesheets.Where(ts =>
                 !ts.IsConfirmed &&
