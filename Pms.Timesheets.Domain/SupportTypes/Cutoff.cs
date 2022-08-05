@@ -12,6 +12,20 @@ namespace Pms.Timesheets.Domain.SupportTypes
         public DateTime CutoffDate { get; private set; }
         public DateTime[] CutoffRange { get; private set; }
 
+        public Cutoff()
+        {
+            int year = DateTime.Now.Year;
+            int month = DateTime.Now.Month;
+
+            if (DateTime.Now.Day < 15)
+                CutoffDate = new DateTime(year, month, 15);
+            else
+                CutoffDate = new DateTime(year, month, DateTime.DaysInMonth(year, month));
+
+            GetCutoffId();
+            GetCutoffRange();
+        }
+
         public Cutoff(DateTime cutoffDate)
         {
             CutoffDate = cutoffDate;
