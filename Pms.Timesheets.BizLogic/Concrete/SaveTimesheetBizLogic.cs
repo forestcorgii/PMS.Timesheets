@@ -1,5 +1,4 @@
 ﻿using Pms.Timesheets.BizDbAccess;
-using Pms.Timesheets.BizDbAccess.Timesheets;
 using Pms.Timesheets.Domain;
 using Pms.Timesheets.Persistence;
 using System;
@@ -10,13 +9,12 @@ using System.Threading.Tasks;
 
 namespace Pms.Timesheets.BizLogic.Concrete
 {
-    public class SaveTimesheetBizLogic
+    public class SaveTimesheetBizLogic : ITimesheetSaving
     {
         private SaveTimesheetDbAccess DbAccess;
-
-        public SaveTimesheetBizLogic(TimesheetDbContext context)
+        public SaveTimesheetBizLogic(TimesheetDbContextFactory _factory)
         {
-            DbAccess = new(context);
+            DbAccess = new(_factory);
         }
 
         public void SaveTimesheet(Timesheet timesheet, string cutoffId, int page)
@@ -44,12 +42,7 @@ namespace Pms.Timesheets.BizLogic.Concrete
         {
             if (timesheet.EE is not null)
             {
-                EmployeeView ee = timesheet.EE;
-                timesheet.PayrollCode = ee.PayrollCode;
-                timesheet.BankCategory = ee.BankCategory;
-                timesheet.Fullname = ee.Fullname;
-                timesheet.Location = ee.Location;
-
+                timesheet.SetEmployeeDetail();
                 DbAccess.CreateOrUpdate(timesheet, false);
             }
         }
