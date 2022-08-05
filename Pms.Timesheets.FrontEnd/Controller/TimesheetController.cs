@@ -21,8 +21,9 @@ namespace Pms.Timesheets.FrontEnd.Controller
 
         public List<Timesheet> List()
         {
-            ListTimesheetsService service = new(Context);
-            return service.GetTimesheets().ToList();
+            //TimesheetListingService service = new(Context);
+            //return service.GetTimesheets().ToList();
+            return new List<Timesheet>();
         }
 
 

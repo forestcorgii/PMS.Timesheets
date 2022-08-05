@@ -91,7 +91,7 @@ namespace Pms.Timesheets.FrontEnd.Controller
             Cutoff cutoff = new Cutoff(cutoffDate);
             try
             {
-                DownloadTimesheetService service = new(Adapter);
+                DownloadContentProvider service = new(Adapter);
                 DownloadContent<Timesheet>? timesheets = await service.DownloadTimesheets(cutoff.CutoffRange, payrollCode, page);
                 if (timesheets is not null && timesheets.message is not null)
                 {

@@ -29,8 +29,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pms.Timesheets.ServiceLayer
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pms.Timesheets.ServiceLayer.TimeSystem", "Pms.Timesheets.ServiceLayer.TimeSystem\Pms.Timesheets.ServiceLayer.TimeSystem.csproj", "{2BB8D0EB-80AA-4F4D-B43D-72B3BFEC9DDA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pms.Timesheets.FrontEnd", "Pms.Timesheets.FrontEnd\Pms.Timesheets.FrontEnd.csproj", "{8E0106B7-B0CB-4C14-B76A-4E2B75BE6C01}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,10 +67,6 @@ Global
 		{2BB8D0EB-80AA-4F4D-B43D-72B3BFEC9DDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2BB8D0EB-80AA-4F4D-B43D-72B3BFEC9DDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2BB8D0EB-80AA-4F4D-B43D-72B3BFEC9DDA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8E0106B7-B0CB-4C14-B76A-4E2B75BE6C01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8E0106B7-B0CB-4C14-B76A-4E2B75BE6C01}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8E0106B7-B0CB-4C14-B76A-4E2B75BE6C01}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8E0106B7-B0CB-4C14-B76A-4E2B75BE6C01}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -85,7 +79,6 @@ Global
 		{83A37986-2C9D-475F-9F8B-CC04C33ADB8F} = {CD93605C-ED98-4134-970A-39CE7AB8B93D}
 		{87F2B680-8E7E-4158-93BC-65EDFE8914CD} = {CD93605C-ED98-4134-970A-39CE7AB8B93D}
 		{2BB8D0EB-80AA-4F4D-B43D-72B3BFEC9DDA} = {CD93605C-ED98-4134-970A-39CE7AB8B93D}
-		{8E0106B7-B0CB-4C14-B76A-4E2B75BE6C01} = {861001BA-F013-4A0B-A3D6-7B9B25D1C12C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {639DA9A4-F730-4405-B973-413D531239D1}
