@@ -11,17 +11,21 @@ using static Pms.Timesheets.ServiceLayer.EfCore.Queries.OrderByExt;
 
 namespace Pms.Timesheets.ServiceLayer.EfCore.Concrete
 {
-    public class TimesheetPageService
+    public class TimesheetPageProvider : ITimesheetPageProvider
     {
-        TimesheetDbContext Context;
-        public TimesheetPageService(TimesheetDbContext context) =>
-            Context = context;
+        private readonly TimesheetDbContextFactory Factory;
+        public TimesheetPageProvider(TimesheetDbContextFactory _factory)
+        {
+            Factory = _factory;
+        }
+
 
         public int GetLastPage(string cutoffId, string payrollCode)
         {
+            using TimesheetDbContext Context = Factory.CreateDbContext();
             IEnumerable<Timesheet> timesheets = Context.Timesheets
-                .OrderByTotalHours(OrderType.Descending)
-                .FilterBy(cutoffId, payrollCode);
+            .OrderByTotalHours(OrderType.Descending)
+            .FilterBy(cutoffId, payrollCode);
 
             if (timesheets.Count() > 0)
                 return timesheets.Max(ts => ts.Page);
@@ -31,6 +35,7 @@ namespace Pms.Timesheets.ServiceLayer.EfCore.Concrete
 
         public List<int> GetPageWithUnconfirmedTS(string cutoffId, string payrollCode)
         {
+            using TimesheetDbContext Context = Factory.CreateDbContext();
             IEnumerable<Timesheet> timesheets = Context.Timesheets.FilterBy(cutoffId, payrollCode);
 
             timesheets = timesheets.Where(ts =>
@@ -41,24 +46,29 @@ namespace Pms.Timesheets.ServiceLayer.EfCore.Concrete
             return timesheets.GroupByPage();
         }
 
-        public List<int> GetPages(string cutoffId, string payrollCode) =>
-            Context.Timesheets
-                .FilterBy(cutoffId, payrollCode)
-                .GroupByPage();
+        public List<int> GetPages(string cutoffId, string payrollCode)
+        {
+            using TimesheetDbContext Context = Factory.CreateDbContext();
+            return Context.Timesheets
+                        .FilterBy(cutoffId, payrollCode)
+                        .GroupByPage();
+
+        }
 
         public List<int> GetMissingPages(string cutoffId, string payrollCode)
         {
+            using TimesheetDbContext Context = Factory.CreateDbContext();
             List<int> pages = Context.Timesheets
                 .FilterBy(cutoffId, payrollCode).ToList()
                 .GroupByPage();
-            
+
             if (pages.Count > 0)
             {
                 List<int> assumedPages = Enumerable.Range(0, pages.Max()).ToList();
                 if (pages.Count > assumedPages.Count)
                     return assumedPages.Except(pages).ToList();
             }
-            
+
             return null;
         }
 

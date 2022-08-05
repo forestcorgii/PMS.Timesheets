@@ -11,18 +11,20 @@ using System.Threading.Tasks;
 
 namespace Pms.Timesheets.ServiceLayer.EfCore.Concrete
 {
-    public class ListTimesheetsService
+    public class TimesheetProvider : ITimesheetProvider
     {
-        TimesheetDbContext Context;
-        public ListTimesheetsService(TimesheetDbContext context)
+        private TimesheetDbContextFactory factory;
+        public TimesheetProvider(TimesheetDbContextFactory _factory)
         {
-            Context = context;
-            Context.Employees.Load();
+            factory = _factory;
         }
 
-        public IEnumerable<Timesheet> GetTimesheets() =>
-            Context.Timesheets;
-         
+        public IEnumerable<Timesheet> GetTimesheets()
+        {
+            using TimesheetDbContext Context = factory.CreateDbContext();
+            return Context.Timesheets.ToList();
+        }
+
 
         public IEnumerable<Timesheet> GetTimesheetsByCutoffId(string cutoffId)
         {
@@ -43,7 +45,7 @@ namespace Pms.Timesheets.ServiceLayer.EfCore.Concrete
         public IEnumerable<Timesheet> GetTimesheetsByCutoffId(string cutoffId, string payrollCode, string bankCategory)
         {
             IEnumerable<Timesheet> timesheets =
-                Context.Timesheets.ToList()
+                GetTimesheets()
                     .FilterBy(cutoffId, payrollCode, bankCategory);
 
             return timesheets;
@@ -61,12 +63,14 @@ namespace Pms.Timesheets.ServiceLayer.EfCore.Concrete
             return timesheets;
         }
 
+        public List<string> ListTimesheetCutoffIds() =>
+            GetTimesheets().ExtractCutoffIds();
 
-
-        //public List<string> ListTimesheetPayrollCodes() =>
-        //    GetTimesheets().ExtractPayrollCodes();
+        public List<string> ListTimesheetPayrollCode() =>
+            GetTimesheets().ExtractPayrollCodes();
 
         public List<string> ListTimesheetBankCategory(string payrollCode) =>
             GetTimesheets().ExtractBankCategories(payrollCode);
+
     }
 }
