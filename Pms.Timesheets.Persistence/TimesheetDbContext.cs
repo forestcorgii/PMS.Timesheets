@@ -10,13 +10,14 @@ namespace Pms.Timesheets.Persistence
         public DbSet<Timesheet> Timesheets => Set<Timesheet>();
         public DbSet<EmployeeView> Employees => Set<EmployeeView>();
 
-        private readonly string ConnectionString = "server=localhost;database=payroll2_efdb;user=root;password=Soft1234;";
+        public TimesheetDbContext(DbContextOptions options) : base(options) { }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySQL(ConnectionString, options =>
-                options.MigrationsHistoryTable("TimesheetsMigrationHistoryName"))
-            .UseLazyLoadingProxies();
+            //if (isWeird)
+            //    optionsBuilder.UseMySQL(ConnectionString, options =>
+            //        options.MigrationsHistoryTable("TimesheetsMigrationHistoryName"))
+            //    .UseLazyLoadingProxies();
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
