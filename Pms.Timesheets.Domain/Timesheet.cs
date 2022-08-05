@@ -63,5 +63,14 @@ namespace Pms.Timesheets.Domain
         #endregion 
 
 
+        public void SetEmployeeDetail()
+        {
+            PayrollCode = EE.PayrollCode;
+            BankCategory = EE.BankCategory;
+            Fullname = EE.Fullname;
+            Location = EE.Location;
+        }
+
+
     }
 }
