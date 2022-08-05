@@ -1,4 +1,5 @@
 ﻿using Pms.Timesheets.Domain;
+using Pms.Timesheets.Domain.SupportTypes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,15 @@ namespace Pms.Timesheets.ServiceLayer.EfCore.QueryObjects
                 .GroupBy(ts => ts.Page, ts => ts.Page)
                 .Select((page, i) => page.First())
                 .ToList();
- 
+
+
+        public static List<string> ExtractCutoffIds(this IEnumerable<Timesheet> timesheets) =>
+            timesheets.ToList()
+                .GroupBy(ts => ts.CutoffId)
+                .Select(ts => ts.First())
+                .OrderByDescending(ts => ts.CutoffId)
+                .Select(ts => ts.CutoffId)
+                .ToList();
 
 
         public static List<string> ExtractBankCategories(this IEnumerable<Timesheet> timesheets, string payrollCode) =>
@@ -32,5 +41,6 @@ namespace Pms.Timesheets.ServiceLayer.EfCore.QueryObjects
                 .Select(ts => ts.First())
                 .OrderBy(ts => ts.PayrollCode)
                 .Select(ts => ts.PayrollCode).ToList();
-    }
+
+        }
 }
