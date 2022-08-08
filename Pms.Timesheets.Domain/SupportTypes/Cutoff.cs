@@ -8,6 +8,7 @@ namespace Pms.Timesheets.Domain.SupportTypes
 {
     public class Cutoff
     {
+        public string Site { get; private set; }
         public string CutoffId { get; private set; }
         public DateTime CutoffDate { get; private set; }
         public DateTime[] CutoffRange { get; private set; }
@@ -64,15 +65,36 @@ namespace Pms.Timesheets.Domain.SupportTypes
 
         private void GetCutoffRange()
         {
-            if (new[] { 28, 29, 30, 31 }.Contains(CutoffDate.Day))
-                CutoffRange = new[] { new DateTime(CutoffDate.Year, CutoffDate.Month, 5), new DateTime(CutoffDate.Year, CutoffDate.Month, 19) };
-            else if (15 == CutoffDate.Day)
+            if (Site == "LEYTE")
             {
-                var previousMonth = CutoffDate.AddMonths(-1);
-                CutoffRange = new[] { new DateTime(previousMonth.Year, previousMonth.Month, 20), new DateTime(CutoffDate.Year, CutoffDate.Month, 4) };
+                if (new[] { 28, 29, 30, 31 }.Contains(CutoffDate.Day))
+                    CutoffRange = new[] { new DateTime(CutoffDate.Year, CutoffDate.Month, 4), new DateTime(CutoffDate.Year, CutoffDate.Month, 18) };
+                else if (15 == CutoffDate.Day)
+                {
+                    var previousMonth = CutoffDate.AddMonths(-1);
+                    CutoffRange = new[] { new DateTime(previousMonth.Year, previousMonth.Month, 19), new DateTime(CutoffDate.Year, CutoffDate.Month, 3) };
+                }
+            }
+            else
+            {
+                if (new[] { 28, 29, 30, 31 }.Contains(CutoffDate.Day))
+                    CutoffRange = new[] { new DateTime(CutoffDate.Year, CutoffDate.Month, 5), new DateTime(CutoffDate.Year, CutoffDate.Month, 19) };
+                else if (15 == CutoffDate.Day)
+                {
+                    var previousMonth = CutoffDate.AddMonths(-1);
+                    CutoffRange = new[] { new DateTime(previousMonth.Year, previousMonth.Month, 20), new DateTime(CutoffDate.Year, CutoffDate.Month, 4) };
+                }
             }
         }
 
         public override string ToString() => CutoffId;
+
+
+
+        public void SetSite(string site)
+        {
+            Site = site;
+            GetCutoffRange();
+        }
     }
 }
