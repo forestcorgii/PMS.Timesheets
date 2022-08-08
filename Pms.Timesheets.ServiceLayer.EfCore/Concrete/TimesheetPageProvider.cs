@@ -69,7 +69,7 @@ namespace Pms.Timesheets.ServiceLayer.EfCore.Concrete
                     return assumedPages.Except(pages).ToList();
             }
 
-            return null;
+            return new List<int>();
         }
 
     }
