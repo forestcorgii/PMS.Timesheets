@@ -43,7 +43,7 @@ namespace Pms.Timesheets.BizLogic.Concrete
             if (timesheet.EE is not null)
             {
                 timesheet.SetEmployeeDetail();
-                DbAccess.CreateOrUpdate(timesheet, false);
+                DbAccess.CreateOrUpdate(timesheet, true);
             }
         }
 
