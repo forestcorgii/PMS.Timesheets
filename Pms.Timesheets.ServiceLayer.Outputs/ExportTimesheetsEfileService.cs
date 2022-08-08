@@ -40,9 +40,9 @@ namespace Pms.Timesheets.ServiceLayer.Outputs
             WriteHeader(nSheet);
 
             int currentRowIndex = 3;
-            currentRowIndex = WriteTimesheets(Timesheets, nSheet, currentRowIndex);
             currentRowIndex = WriteTimesheets(UnconfirmedTimesheetsWithAttendance, nSheet, currentRowIndex, "UNCONFIRMED TIMESHEETS(WITH ATTENDANCE)");
-            _ = WriteTimesheets(UnconfirmedTimesheetsWithoutAttendance, nSheet, currentRowIndex, "UNCONFIRMED TIMESHEETS(WITHOUT ATTENDANCE)");
+            currentRowIndex = WriteTimesheets(UnconfirmedTimesheetsWithoutAttendance, nSheet, currentRowIndex, "UNCONFIRMED TIMESHEETS(WITHOUT ATTENDANCE)");
+            _ = WriteTimesheets(Timesheets, nSheet, currentRowIndex);
 
             using var nEFile = new FileStream(filePath, FileMode.Create, FileAccess.Write);
             nWorkbook.Write(nEFile);
