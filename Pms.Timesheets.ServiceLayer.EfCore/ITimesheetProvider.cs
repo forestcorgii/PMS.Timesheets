@@ -19,6 +19,11 @@ namespace Pms.Timesheets.ServiceLayer.EfCore
 
         IEnumerable<Timesheet> GetTimesheetNoEETimesheet(string cutoffId);
 
-        List<string> ListTimesheetBankCategory(string payrollCode);
+
+        List<string> ListTimesheetCutoffIds();
+
+        List<string> ListTimesheetPayrollCodes();
+
+        List<string> ListTimesheetBankCategories(string cutoffId, string payrollCode);
     }
 }

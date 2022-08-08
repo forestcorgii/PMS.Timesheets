@@ -28,24 +28,31 @@ namespace Pms.Timesheets.ServiceLayer.EfCore.Concrete
 
         public IEnumerable<Timesheet> GetTimesheetsByCutoffId(string cutoffId)
         {
+            TimesheetDbContext Context = factory.CreateDbContext();
             IEnumerable<Timesheet> timesheets =
-                GetTimesheets()
+                Context.Timesheets
+                    .Include(ts => ts.EE)
                     .FilterBy(cutoffId);
 
             return timesheets;
+
         }
         public IEnumerable<Timesheet> GetTimesheetsByCutoffId(string cutoffId, string payrollCode)
         {
+            TimesheetDbContext Context = factory.CreateDbContext();
             IEnumerable<Timesheet> timesheets =
-                GetTimesheets()
+                Context.Timesheets
+                    .Include(ts => ts.EE)
                     .FilterBy(cutoffId, payrollCode);
 
             return timesheets;
         }
         public IEnumerable<Timesheet> GetTimesheetsByCutoffId(string cutoffId, string payrollCode, string bankCategory)
         {
+            TimesheetDbContext Context = factory.CreateDbContext();
             IEnumerable<Timesheet> timesheets =
-                GetTimesheets()
+                Context.Timesheets
+                    .Include(ts => ts.EE)
                     .FilterBy(cutoffId, payrollCode, bankCategory);
 
             return timesheets;
@@ -55,10 +62,15 @@ namespace Pms.Timesheets.ServiceLayer.EfCore.Concrete
 
         public IEnumerable<Timesheet> GetTimesheetNoEETimesheet(string cutoffId)
         {
-            IEnumerable<Timesheet> timesheets =
-                GetTimesheets()
-                    .FilterBy(cutoffId).ToList()
-                    .Where(ts => ts.EE == default);
+            TimesheetDbContext Context = factory.CreateDbContext();
+            IEnumerable<Timesheet> validTimesheets = Context.Timesheets
+                .Include(ts => ts.EE)
+                .Where(ts => ts.EE.PayrollCode != "")
+                .FilterBy(cutoffId);
+            IEnumerable<Timesheet> timesheets = Context.Timesheets
+                .FilterBy(cutoffId);
+            timesheets = timesheets.Except(validTimesheets);
+            Console.WriteLine(timesheets.Count());
 
             return timesheets;
         }
@@ -66,11 +78,11 @@ namespace Pms.Timesheets.ServiceLayer.EfCore.Concrete
         public List<string> ListTimesheetCutoffIds() =>
             GetTimesheets().ExtractCutoffIds();
 
-        public List<string> ListTimesheetPayrollCode() =>
+        public List<string> ListTimesheetPayrollCodes() =>
             GetTimesheets().ExtractPayrollCodes();
 
-        public List<string> ListTimesheetBankCategory(string payrollCode) =>
-            GetTimesheets().ExtractBankCategories(payrollCode);
+        public List<string> ListTimesheetBankCategories(string cutoffId, string payrollCode) =>
+            GetTimesheetsByCutoffId(cutoffId).ExtractBankCategories(payrollCode);
 
     }
 }
