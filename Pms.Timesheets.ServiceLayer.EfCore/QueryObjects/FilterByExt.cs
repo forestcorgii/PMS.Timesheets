@@ -37,7 +37,7 @@ namespace Pms.Timesheets.ServiceLayer.EfCore.Queries
                     ts.IsConfirmed &&
                     ts.TotalHours > 0
                 )
-                .OrderBy(ts => ts.EE.Fullname);
+                .OrderBy(ts => ts.Fullname);
         }
 
 
@@ -45,14 +45,14 @@ namespace Pms.Timesheets.ServiceLayer.EfCore.Queries
         {
             return timesheets
                 .Where(ts => !ts.IsConfirmed && ts.TotalHours == 0)
-                .OrderBy(ts => ts.EE.Fullname);
+                .OrderBy(ts => ts.Fullname);
         }
 
         public static IEnumerable<Timesheet> ByUnconfirmedWithAttendance(this IEnumerable<Timesheet> timesheets)
         {
             return timesheets
                 .Where(ts => !ts.IsConfirmed && ts.TotalHours > 0)
-                .OrderBy(ts => ts.EE.Fullname);
+                .OrderBy(ts => ts.Fullname);
         }
     }
 }
