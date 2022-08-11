@@ -24,7 +24,7 @@ namespace Pms.Timesheets.Domain
         public string PayrollCode { get; set; } = "";
 
         public string BankCategory { get; set; } = "";
-        
+
         public string Location { get; set; } = "";
 
         [JsonProperty("total_hours")]
@@ -50,7 +50,7 @@ namespace Pms.Timesheets.Domain
 
         [NotMapped]
         [JsonProperty("pcv")]
-        public string[][] PCV { get; set; }
+        public string[,] PCV { get; set; }
 
         public string RawPCV { get; set; }
 

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Pms.Timesheets.Persistence
 {
-    public class TimesheetDbContextFactory
+    public class TimesheetDbContextFactory : IDbContextFactory<TimesheetDbContext>
     {
         private readonly string _connectionString;
 
@@ -23,10 +23,13 @@ namespace Pms.Timesheets.Persistence
                     _connectionString, 
                     options => options.MigrationsHistoryTable("TimesheetsMigrationHistoryName")
                 )
-                //.UseLazyLoadingProxies()
                 .Options;
 
             return new TimesheetDbContext(dbContextOptions);
         }
     }
 }
+
+
+
+

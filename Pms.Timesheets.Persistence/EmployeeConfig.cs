@@ -9,7 +9,7 @@ namespace Pms.Timesheets.Persistence
 
         public void Configure(EntityTypeBuilder<EmployeeView> builder)
         {
-            builder.ToView("masterlist").HasKey(ee => ee.EEId);   //Map the BookView to the Books table in the BookDbContext part
+            builder.ToView("masterlist").HasKey(ee => ee.EEId);   
             
             builder.Property(cc => cc.EEId).HasColumnType("VARCHAR(8)").IsRequired();
             builder.Property(cc => cc.FirstName).HasColumnType("VARCHAR(45)");
@@ -18,6 +18,7 @@ namespace Pms.Timesheets.Persistence
             builder.Property(cc => cc.Location).HasColumnType("VARCHAR(45)");
             builder.Property(cc => cc.PayrollCode).HasColumnType("VARCHAR(45)");
             builder.Property(cc => cc.BankCategory).HasColumnType("VARCHAR(45)");
+
         }
     }
 }

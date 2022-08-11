@@ -11,8 +11,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Domain Logic", "2 - Dom
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Service Layer", "4 - Service Layer", "{CD93605C-ED98-4134-970A-39CE7AB8B93D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 - Front End", "5 - Front End", "{861001BA-F013-4A0B-A3D6-7B9B25D1C12C}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pms.Timesheets", "Pms.Timesheets\Pms.Timesheets.csproj", "{4533692A-BBD3-4F65-AC8D-A937E0BC78C8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pms.Timesheets.Domain", "Pms.Timesheets.Domain\Pms.Timesheets.Domain.csproj", "{488EEDA0-3A95-44B6-9EA7-5B175483C413}"
@@ -28,6 +26,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pms.Timesheets.ServiceLayer.Outputs", "Pms.Timesheets.ServiceLayer.Outputs\Pms.Timesheets.ServiceLayer.Outputs.csproj", "{87F2B680-8E7E-4158-93BC-65EDFE8914CD}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pms.Timesheets.ServiceLayer.TimeSystem", "Pms.Timesheets.ServiceLayer.TimeSystem\Pms.Timesheets.ServiceLayer.TimeSystem.csproj", "{2BB8D0EB-80AA-4F4D-B43D-72B3BFEC9DDA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pms.Timesheets.Tests", "Pms.Timesheets.Tests\Pms.Timesheets.Tests.csproj", "{AE2CB0DA-E07F-49AB-B52C-5614CA98629F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -67,6 +67,10 @@ Global
 		{2BB8D0EB-80AA-4F4D-B43D-72B3BFEC9DDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2BB8D0EB-80AA-4F4D-B43D-72B3BFEC9DDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2BB8D0EB-80AA-4F4D-B43D-72B3BFEC9DDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE2CB0DA-E07F-49AB-B52C-5614CA98629F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE2CB0DA-E07F-49AB-B52C-5614CA98629F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE2CB0DA-E07F-49AB-B52C-5614CA98629F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE2CB0DA-E07F-49AB-B52C-5614CA98629F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,4 +1,5 @@
-﻿using Pms.Timesheets.BizDbAccess;
+﻿using Microsoft.EntityFrameworkCore;
+using Pms.Timesheets.BizDbAccess;
 using Pms.Timesheets.Domain;
 using Pms.Timesheets.Persistence;
 using System;
@@ -12,7 +13,7 @@ namespace Pms.Timesheets.BizLogic.Concrete
     public class SaveTimesheetBizLogic : ITimesheetSaving
     {
         private SaveTimesheetDbAccess DbAccess;
-        public SaveTimesheetBizLogic(TimesheetDbContextFactory _factory)
+        public SaveTimesheetBizLogic(IDbContextFactory<TimesheetDbContext> _factory)
         {
             DbAccess = new(_factory);
         }
@@ -28,13 +29,13 @@ namespace Pms.Timesheets.BizLogic.Concrete
             DbAccess.CreateOrUpdate(timesheet);
         }
 
-        private string ToRawPCV(string[][] pcv)
+        private string ToRawPCV(string[,] pcv)
         {
-            string[] to1D = new string[pcv.Length];
+            string[] to1D = new string[pcv.Length / 2];
 
-            for (int i = 0; i < pcv.Length; i++)
-                to1D[i] = string.Join('_', pcv[i]);
-            return string.Join(',',to1D);
+            for (int i = 0; i < to1D.Length; i++)
+                to1D[i] = $"{pcv[i, 0]}~{pcv[i, 1]}";
+            return string.Join('|', to1D);
         }
 
 

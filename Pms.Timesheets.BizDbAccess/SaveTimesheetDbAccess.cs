@@ -1,4 +1,5 @@
-﻿using Pms.Timesheets.BizDbAccess;
+﻿using Microsoft.EntityFrameworkCore;
+using Pms.Timesheets.BizDbAccess;
 using Pms.Timesheets.Domain;
 using Pms.Timesheets.Persistence;
 using System;
@@ -11,8 +12,8 @@ namespace Pms.Timesheets.BizDbAccess
 {
     public class SaveTimesheetDbAccess
     {
-        private TimesheetDbContextFactory factory;
-        public SaveTimesheetDbAccess(TimesheetDbContextFactory _factory)
+        private IDbContextFactory<TimesheetDbContext> factory;
+        public SaveTimesheetDbAccess(IDbContextFactory<TimesheetDbContext> _factory)
         {
             factory = _factory;
         }

@@ -13,8 +13,8 @@ namespace Pms.Timesheets.ServiceLayer.EfCore.Concrete
 {
     public class TimesheetProvider : ITimesheetProvider
     {
-        private TimesheetDbContextFactory factory;
-        public TimesheetProvider(TimesheetDbContextFactory _factory)
+        private IDbContextFactory<TimesheetDbContext> factory;
+        public TimesheetProvider(IDbContextFactory<TimesheetDbContext> _factory)
         {
             factory = _factory;
         }
