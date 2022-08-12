@@ -20,6 +20,10 @@
         <dependency id="Microsoft.Extensions.Configuration" version="6.0.1" />
         <dependency id="Microsoft.Extensions.Configuration.Binder" version="6.0.0" />
         <dependency id="Microsoft.Extensions.Configuration.UserSecrets" version="6.0.1" />
+        <dependency id="Microsoft.NET.Test.Sdk" version="17.1.0" />
+        <dependency id="xunit" version="2.4.1" />
+        <dependency id="xunit.runner.visualstudio" version="2.4.3" />
+        <dependency id="coverlet.collector" version="3.1.2" />
       </group>
     </dependencies>
   </metadata>
@@ -40,5 +44,7 @@
     <file src="..\Pms.Timesheets.ServiceLayer.Outputs\bin\Debug\net5.0\Pms.Timesheets.ServiceLayer.Outputs.pdb" target="lib\net5.0" />
     <file src="..\Pms.Timesheets.ServiceLayer.TimeSystem\bin\Debug\net5.0\Pms.Timesheets.ServiceLayer.TimeSystem.dll" target="lib\net5.0" />
     <file src="..\Pms.Timesheets.ServiceLayer.TimeSystem\bin\Debug\net5.0\Pms.Timesheets.ServiceLayer.TimeSystem.pdb" target="lib\net5.0" />
+    <file src="..\Pms.Timesheets.Tests\bin\Debug\net5.0\Pms.Timesheets.Tests.dll" target="lib\net5.0" />
+    <file src="..\Pms.Timesheets.Tests\bin\Debug\net5.0\Pms.Timesheets.Tests.pdb" target="lib\net5.0" />
   </files>
 </package>

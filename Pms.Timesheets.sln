@@ -27,7 +27,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pms.Timesheets.ServiceLayer
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pms.Timesheets.ServiceLayer.TimeSystem", "Pms.Timesheets.ServiceLayer.TimeSystem\Pms.Timesheets.ServiceLayer.TimeSystem.csproj", "{2BB8D0EB-80AA-4F4D-B43D-72B3BFEC9DDA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pms.Timesheets.Tests", "Pms.Timesheets.Tests\Pms.Timesheets.Tests.csproj", "{AE2CB0DA-E07F-49AB-B52C-5614CA98629F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pms.Timesheets.Tests", "Pms.Timesheets.Tests\Pms.Timesheets.Tests.csproj", "{AE2CB0DA-E07F-49AB-B52C-5614CA98629F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -74,15 +74,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{488EEDA0-3A95-44B6-9EA7-5B175483C413} = {1E17A7B1-B755-499E-ACA2-12BB038D9401}
-		{E62AC9BB-6B14-4882-8D08-65CB8BFE506B} = {ADD9FF03-B3F5-4B0E-91ED-BD7BADFA2C68}
-		{6C9BCA79-5731-4D87-9316-C1D72ADADB13} = {0E1FA442-DED5-4AD8-8853-918F401FF990}
-		{9BC19D00-CF63-4EC9-A81B-C8476AC20A84} = {0E1FA442-DED5-4AD8-8853-918F401FF990}
-		{83A37986-2C9D-475F-9F8B-CC04C33ADB8F} = {CD93605C-ED98-4134-970A-39CE7AB8B93D}
-		{87F2B680-8E7E-4158-93BC-65EDFE8914CD} = {CD93605C-ED98-4134-970A-39CE7AB8B93D}
-		{2BB8D0EB-80AA-4F4D-B43D-72B3BFEC9DDA} = {CD93605C-ED98-4134-970A-39CE7AB8B93D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {639DA9A4-F730-4405-B973-413D531239D1}

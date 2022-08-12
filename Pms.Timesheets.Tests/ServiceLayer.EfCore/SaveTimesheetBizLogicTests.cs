@@ -2,7 +2,7 @@
 using Pms.Timesheets.BizLogic.Concrete;
 using Pms.Timesheets.Domain;
 using Pms.Timesheets.Persistence;
-using Pms.Timesheets.ServiceLayer.EfCore.Concrete;
+using Pms.Timesheets.ServiceLayer.EfCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +16,7 @@ namespace Pms.Timesheets.Tests.ServiceLayer.EfCore
     {
         private readonly IDbContextFactory<TimesheetDbContext> _factory;
         private readonly SaveTimesheetBizLogic _service;
-        private readonly TimesheetProvider _providerService;
+        private readonly ProvideTimesheetService _providerService;
 
 
         public SaveTimesheetBizLogicTests()
