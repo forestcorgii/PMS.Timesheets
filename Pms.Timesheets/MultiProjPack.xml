@@ -12,9 +12,7 @@
     <!-- This is used to find projects with names starting with this. If null, then uses NuGet id -->
     <NamespacePrefix></NamespacePrefix>
     <!-- excludes named projects (comma separated), e.g. "Test" would exclude a project starting with "BookApp.Books.Test" -->
-    <ExcludeProjects>FrontEnd
-    
-    </ExcludeProjects>
+    <ExcludeProjects>FrontEnd,Tests</ExcludeProjects>
     <!-- worth filling in with your local NuGet Package Source folder. See docs about using {USERPROFILE} in string -->
     <CopyNuGetTo>C:\Program Files (x86)\Microsoft SDKs\NuGetPackages\</CopyNuGetTo> 
   </toolSettings>

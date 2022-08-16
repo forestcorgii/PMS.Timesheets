@@ -3,14 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32602.291
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0 - Domain", "0 - Domain", "{1E17A7B1-B755-499E-ACA2-12BB038D9401}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Persistence", "1 - Persistence", "{ADD9FF03-B3F5-4B0E-91ED-BD7BADFA2C68}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Domain Logic", "2 - Domain Logic", "{0E1FA442-DED5-4AD8-8853-918F401FF990}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Service Layer", "4 - Service Layer", "{CD93605C-ED98-4134-970A-39CE7AB8B93D}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pms.Timesheets", "Pms.Timesheets\Pms.Timesheets.csproj", "{4533692A-BBD3-4F65-AC8D-A937E0BC78C8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pms.Timesheets.Domain", "Pms.Timesheets.Domain\Pms.Timesheets.Domain.csproj", "{488EEDA0-3A95-44B6-9EA7-5B175483C413}"
