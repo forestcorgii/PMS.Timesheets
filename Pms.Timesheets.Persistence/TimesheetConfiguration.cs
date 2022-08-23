@@ -4,7 +4,7 @@ using Pms.Timesheets.Domain;
 
 namespace Pms.Timesheets.Persistence
 {
-    public class TimesheetConfig : IEntityTypeConfiguration<Timesheet>
+    public class TimesheetConfiguration : IEntityTypeConfiguration<Timesheet>
     {
 
         public void Configure(EntityTypeBuilder<Timesheet> builder)

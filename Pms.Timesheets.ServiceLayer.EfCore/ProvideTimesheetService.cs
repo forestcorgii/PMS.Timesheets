@@ -20,7 +20,7 @@ namespace Pms.Timesheets.ServiceLayer.EfCore
         public IEnumerable<Timesheet> GetTimesheets()
         {
             using TimesheetDbContext Context = factory.CreateDbContext();
-            return Context.Timesheets.ToList();
+            return Context.Timesheets.Include(ts => ts.EE).ToList();
         }
 
 

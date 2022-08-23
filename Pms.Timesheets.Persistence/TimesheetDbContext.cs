@@ -22,8 +22,8 @@ namespace Pms.Timesheets.Persistence
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new TimesheetConfig());
-            modelBuilder.ApplyConfiguration(new EmployeeConfig());
+            modelBuilder.ApplyConfiguration(new TimesheetConfiguration());
+            modelBuilder.ApplyConfiguration(new EmployeeViewConfiguration());
         }
 
         public override int SaveChanges()

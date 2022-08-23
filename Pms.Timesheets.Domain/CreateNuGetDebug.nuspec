@@ -24,8 +24,6 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="..\Pms.Timesheets\bin\Debug\net5.0\Pms.Timesheets.dll" target="lib\net5.0" />
-    <file src="..\Pms.Timesheets\bin\Debug\net5.0\Pms.Timesheets.pdb" target="lib\net5.0" />
     <file src="..\Pms.Timesheets.BizDbAccess\bin\Debug\net5.0\Pms.Timesheets.BizDbAccess.dll" target="lib\net5.0" />
     <file src="..\Pms.Timesheets.BizDbAccess\bin\Debug\net5.0\Pms.Timesheets.BizDbAccess.pdb" target="lib\net5.0" />
     <file src="..\Pms.Timesheets.BizLogic\bin\Debug\net5.0\Pms.Timesheets.BizLogic.dll" target="lib\net5.0" />

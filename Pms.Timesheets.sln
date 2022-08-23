@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32602.291
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pms.Timesheets", "Pms.Timesheets\Pms.Timesheets.csproj", "{4533692A-BBD3-4F65-AC8D-A937E0BC78C8}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pms.Timesheets.Domain", "Pms.Timesheets.Domain\Pms.Timesheets.Domain.csproj", "{488EEDA0-3A95-44B6-9EA7-5B175483C413}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pms.Timesheets.Persistence", "Pms.Timesheets.Persistence\Pms.Timesheets.Persistence.csproj", "{E62AC9BB-6B14-4882-8D08-65CB8BFE506B}"
@@ -21,16 +19,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pms.Timesheets.ServiceLayer
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pms.Timesheets.Tests", "Pms.Timesheets.Tests\Pms.Timesheets.Tests.csproj", "{AE2CB0DA-E07F-49AB-B52C-5614CA98629F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pms.Timesheets.ServiceLayer.Files", "Pms.Timesheets.ServiceLayer.Files\Pms.Timesheets.ServiceLayer.Files.csproj", "{FCB58D67-842C-4F65-B37B-15E0C903B765}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4533692A-BBD3-4F65-AC8D-A937E0BC78C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4533692A-BBD3-4F65-AC8D-A937E0BC78C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4533692A-BBD3-4F65-AC8D-A937E0BC78C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4533692A-BBD3-4F65-AC8D-A937E0BC78C8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{488EEDA0-3A95-44B6-9EA7-5B175483C413}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{488EEDA0-3A95-44B6-9EA7-5B175483C413}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{488EEDA0-3A95-44B6-9EA7-5B175483C413}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -63,6 +59,10 @@ Global
 		{AE2CB0DA-E07F-49AB-B52C-5614CA98629F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE2CB0DA-E07F-49AB-B52C-5614CA98629F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE2CB0DA-E07F-49AB-B52C-5614CA98629F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCB58D67-842C-4F65-B37B-15E0C903B765}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCB58D67-842C-4F65-B37B-15E0C903B765}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCB58D67-842C-4F65-B37B-15E0C903B765}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCB58D67-842C-4F65-B37B-15E0C903B765}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

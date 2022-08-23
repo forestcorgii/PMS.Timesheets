@@ -4,7 +4,7 @@ using Pms.Timesheets.Domain;
 
 namespace Pms.Timesheets.Persistence
 {
-    public class EmployeeConfig : IEntityTypeConfiguration<EmployeeView>
+    public class EmployeeViewConfiguration : IEntityTypeConfiguration<EmployeeView>
     {
 
         public void Configure(EntityTypeBuilder<EmployeeView> builder)

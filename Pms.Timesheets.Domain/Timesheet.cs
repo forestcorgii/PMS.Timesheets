@@ -71,6 +71,6 @@ namespace Pms.Timesheets.Domain
             Location = EE.Location;
         }
 
-
+        public static string GenerateId(Timesheet timesheet) => $"{timesheet.EEId}_{timesheet.CutoffId}";
     }
 }

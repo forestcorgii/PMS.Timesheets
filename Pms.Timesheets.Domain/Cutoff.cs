@@ -19,7 +19,7 @@ namespace Pms.Timesheets.Domain.SupportTypes
             int month = DateTime.Now.Month;
 
             if (DateTime.Now.Day < 20)
-                CutoffDate = new DateTime(year, month, 20);
+                CutoffDate = new DateTime(year, month, 15);
             else
                 CutoffDate = new DateTime(year, month, DateTime.DaysInMonth(year, month));
 

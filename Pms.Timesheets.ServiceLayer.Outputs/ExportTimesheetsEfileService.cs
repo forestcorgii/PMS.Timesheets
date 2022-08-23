@@ -35,7 +35,7 @@ namespace Pms.Timesheets.ServiceLayer.Outputs
             if (Timesheets.Count == 0) return;
 
             IWorkbook nWorkbook = new HSSFWorkbook();
-            ISheet nSheet = nWorkbook.CreateSheet("Sheet1");
+            ISheet nSheet = nWorkbook.CreateSheet(Cutoff.CutoffId);
             WritePayRegisterInfo(nSheet);
             WriteHeader(nSheet);
 
