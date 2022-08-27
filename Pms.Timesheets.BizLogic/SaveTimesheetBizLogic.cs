@@ -31,11 +31,15 @@ namespace Pms.Timesheets.BizLogic.Concrete
 
         private string ToRawPCV(string[,] pcv)
         {
-            string[] to1D = new string[pcv.Length / 2];
+            if (pcv is not null)
+            {
+                string[] to1D = new string[pcv.Length / 2];
 
-            for (int i = 0; i < to1D.Length; i++)
-                to1D[i] = $"{pcv[i, 0]}~{pcv[i, 1]}";
-            return string.Join('|', to1D);
+                for (int i = 0; i < to1D.Length; i++)
+                    to1D[i] = $"{pcv[i, 0]}~{pcv[i, 1]}";
+                return string.Join('|', to1D);
+            }
+            return string.Empty;
         }
 
 

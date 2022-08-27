@@ -22,7 +22,21 @@ namespace Pms.Timesheets.ServiceLayer.EfCore
             using TimesheetDbContext Context = factory.CreateDbContext();
             return Context.Timesheets.Include(ts => ts.EE).ToList();
         }
-
+        public IEnumerable<Timesheet> GetTimesheets(string cutoffId)
+        {
+            using TimesheetDbContext Context = factory.CreateDbContext();
+            return Context.Timesheets
+                .Include(ts => ts.EE).ToList()
+                .FilterByCutoffId(cutoffId);
+        }
+        public IEnumerable<Timesheet> GetTimesheetsByMonth(int month)
+        {
+            using TimesheetDbContext Context = factory.CreateDbContext();
+            return Context.Timesheets
+                .Include(ts => ts.EE).ToList()
+                .Where(ts => ts.Cutoff.CutoffDate.Month == month)
+                .OrderBy(ts => ts.CutoffId);
+        }
 
         public IEnumerable<Timesheet> GetTimesheetNoEETimesheet(string cutoffId)
         {
@@ -97,5 +111,6 @@ namespace Pms.Timesheets.ServiceLayer.EfCore
 
             return new List<int>();
         }
+
     }
 }

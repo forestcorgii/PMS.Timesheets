@@ -13,13 +13,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pms.Timesheets.BizLogic", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pms.Timesheets.ServiceLayer.EfCore", "Pms.Timesheets.ServiceLayer.EfCore\Pms.Timesheets.ServiceLayer.EfCore.csproj", "{83A37986-2C9D-475F-9F8B-CC04C33ADB8F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pms.Timesheets.ServiceLayer.Outputs", "Pms.Timesheets.ServiceLayer.Outputs\Pms.Timesheets.ServiceLayer.Outputs.csproj", "{87F2B680-8E7E-4158-93BC-65EDFE8914CD}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pms.Timesheets.ServiceLayer.TimeSystem", "Pms.Timesheets.ServiceLayer.TimeSystem\Pms.Timesheets.ServiceLayer.TimeSystem.csproj", "{2BB8D0EB-80AA-4F4D-B43D-72B3BFEC9DDA}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pms.Timesheets.Tests", "Pms.Timesheets.Tests\Pms.Timesheets.Tests.csproj", "{AE2CB0DA-E07F-49AB-B52C-5614CA98629F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pms.Timesheets.ServiceLayer.Files", "Pms.Timesheets.ServiceLayer.Files\Pms.Timesheets.ServiceLayer.Files.csproj", "{FCB58D67-842C-4F65-B37B-15E0C903B765}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pms.Timesheets.ServiceLayer.Files", "Pms.Timesheets.ServiceLayer.Files\Pms.Timesheets.ServiceLayer.Files.csproj", "{FCB58D67-842C-4F65-B37B-15E0C903B765}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,10 +45,6 @@ Global
 		{83A37986-2C9D-475F-9F8B-CC04C33ADB8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{83A37986-2C9D-475F-9F8B-CC04C33ADB8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{83A37986-2C9D-475F-9F8B-CC04C33ADB8F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{87F2B680-8E7E-4158-93BC-65EDFE8914CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{87F2B680-8E7E-4158-93BC-65EDFE8914CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{87F2B680-8E7E-4158-93BC-65EDFE8914CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{87F2B680-8E7E-4158-93BC-65EDFE8914CD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2BB8D0EB-80AA-4F4D-B43D-72B3BFEC9DDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2BB8D0EB-80AA-4F4D-B43D-72B3BFEC9DDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2BB8D0EB-80AA-4F4D-B43D-72B3BFEC9DDA}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -27,4 +27,9 @@
     <ProjectReference Include="..\Pms.Timesheets.ServiceLayer.Files\Pms.Timesheets.ServiceLayer.Files.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ServiceLayer.Files\" />
+    <Folder Include="ServiceLayer.TimeSystem\" />
+  </ItemGroup>
+
 </Project>

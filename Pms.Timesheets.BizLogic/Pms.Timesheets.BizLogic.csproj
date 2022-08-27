@@ -9,4 +9,8 @@
     <ProjectReference Include="..\Pms.Timesheets.Domain\Pms.Timesheets.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Concrete\" />
+  </ItemGroup>
+
 </Project>

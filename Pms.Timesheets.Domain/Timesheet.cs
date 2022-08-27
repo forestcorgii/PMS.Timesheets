@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Newtonsoft.Json;
+using Pms.Timesheets.Domain.SupportTypes;
 
 namespace Pms.Timesheets.Domain
 {
@@ -20,6 +21,7 @@ namespace Pms.Timesheets.Domain
         public string Fullname { get; set; } = "";
 
         public string CutoffId { get; set; }
+        public Cutoff Cutoff => new(CutoffId);
 
         public string PayrollCode { get; set; } = "";
 

@@ -2,7 +2,7 @@
 <package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>Pms.Timesheets</id>
-    <version>1.0.0-preview002</version>
+    <version>1.0.0-preview003</version>
     <authors>you must give a list of author(s)</authors>
     <description>you must provide a description of the NuGet</description>
     <releaseNotes>optional: what is changed in this release?</releaseNotes>
@@ -15,6 +15,7 @@
         <dependency id="Microsoft.EntityFrameworkCore.Proxies" version="5.0.17" />
         <dependency id="Microsoft.EntityFrameworkCore.Relational" version="5.0.17" />
         <dependency id="MySql.EntityFrameworkCore" version="5.0.13" />
+        <dependency id="ExcelDataReader" version="3.6.0" />
         <dependency id="dotnetdbf" version="6.0.0.3" />
         <dependency id="NPOI" version="2.5.6" />
         <dependency id="Microsoft.Extensions.Configuration" version="6.0.1" />
@@ -34,6 +35,8 @@
     <file src="..\Pms.Timesheets.Persistence\bin\Debug\net5.0\Pms.Timesheets.Persistence.pdb" target="lib\net5.0" />
     <file src="..\Pms.Timesheets.ServiceLayer.EfCore\bin\Debug\net5.0\Pms.Timesheets.ServiceLayer.EfCore.dll" target="lib\net5.0" />
     <file src="..\Pms.Timesheets.ServiceLayer.EfCore\bin\Debug\net5.0\Pms.Timesheets.ServiceLayer.EfCore.pdb" target="lib\net5.0" />
+    <file src="..\Pms.Timesheets.ServiceLayer.Files\bin\Debug\net5.0\Pms.Timesheets.ServiceLayer.Files.dll" target="lib\net5.0" />
+    <file src="..\Pms.Timesheets.ServiceLayer.Files\bin\Debug\net5.0\Pms.Timesheets.ServiceLayer.Files.pdb" target="lib\net5.0" />
     <file src="..\Pms.Timesheets.ServiceLayer.Outputs\bin\Debug\net5.0\Pms.Timesheets.ServiceLayer.Outputs.dll" target="lib\net5.0" />
     <file src="..\Pms.Timesheets.ServiceLayer.Outputs\bin\Debug\net5.0\Pms.Timesheets.ServiceLayer.Outputs.pdb" target="lib\net5.0" />
     <file src="..\Pms.Timesheets.ServiceLayer.TimeSystem\bin\Debug\net5.0\Pms.Timesheets.ServiceLayer.TimeSystem.dll" target="lib\net5.0" />

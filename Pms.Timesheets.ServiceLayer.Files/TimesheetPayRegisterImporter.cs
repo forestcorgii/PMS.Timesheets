@@ -26,8 +26,9 @@ namespace Pms.Timesheets.ServiceLayer.Files
         }
 
 
-        public IEnumerable<Timesheet> StartImport(string payRegisterFilePath,string payrollCode)
+        public IEnumerable<Timesheet> StartImport(string payRegisterFilePath, string payrollCode)
         {
+            cutoffDate = default;
             List<Timesheet> payrolls = new();
             using (var stream = File.Open(payRegisterFilePath, FileMode.Open, FileAccess.Read))
             {
@@ -121,6 +122,6 @@ namespace Pms.Timesheets.ServiceLayer.Files
                     cutoffDate = DateTime.ParseExact(payrollDateRaw, "dd MMMM yyyy", CultureInfo.InvariantCulture);
             }
         }
-         
+
     }
 }
