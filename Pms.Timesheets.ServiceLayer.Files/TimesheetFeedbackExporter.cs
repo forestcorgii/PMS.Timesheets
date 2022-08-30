@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Pms.Timesheets.ServiceLayer.Outputs
 {
-    public class ExportTimesheetsFeedbackService
+    public class TimesheetFeedbackExporter
     {
         private Cutoff Cutoff { get; set; }
         private string PayrollCode { get; set; }
@@ -20,7 +20,7 @@ namespace Pms.Timesheets.ServiceLayer.Outputs
         private List<Timesheet> UnconfirmedTimesheetsWithAttendance { get; set; }
         private List<Timesheet> UnconfirmedTimesheetsWithoutAttendance { get; set; }
 
-        public ExportTimesheetsFeedbackService(Cutoff cutoff, string payrollCode, string bankCategory, List<Timesheet> timesheets, List<Timesheet> unconfirmedTimesheetsWithAttendance, List<Timesheet> unconfirmedTimesheetsWithoutAttendance)
+        public TimesheetFeedbackExporter(Cutoff cutoff, string payrollCode, string bankCategory, List<Timesheet> timesheets, List<Timesheet> unconfirmedTimesheetsWithAttendance, List<Timesheet> unconfirmedTimesheetsWithoutAttendance)
         {
             Cutoff = cutoff;
             PayrollCode = payrollCode;

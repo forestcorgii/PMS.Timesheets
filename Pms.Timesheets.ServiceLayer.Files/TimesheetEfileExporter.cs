@@ -11,33 +11,32 @@ using System.Threading.Tasks;
 
 namespace Pms.Timesheets.ServiceLayer.Outputs
 {
-    public class ExportTimesheetsEfileService
+    public class TimesheetEfileExporter
     {
         private Cutoff Cutoff { get; set; }
         private string PayrollCode { get; set; }
         private string BankCategory { get; set; }
-        private List<Timesheet[]> MonthlyTimesheets { get; set; }
+        private List<Timesheet[]> TwoPeriodTimesheets { get; set; }
 
-        public ExportTimesheetsEfileService(Cutoff cutoff, string payrollCode, string bankCategory, List<Timesheet[]> monthlyTimesheets)
+        public TimesheetEfileExporter(Cutoff cutoff, string payrollCode, string bankCategory, List<Timesheet[]> twoPeriodTimesheets)
         {
             Cutoff = cutoff;
             PayrollCode = payrollCode;
             BankCategory = bankCategory;
 
-            MonthlyTimesheets = monthlyTimesheets;
-            MonthlyTimesheets = MonthlyTimesheets.OrderBy(mts => mts[0].EE.Fullname).ToList();
+            TwoPeriodTimesheets = twoPeriodTimesheets.OrderBy(mts => mts[0].EE.Fullname).ToList();
         }
 
         public void ExportEFile(string filePath)
         {
-            if (MonthlyTimesheets.Count == 0) return;
+            if (TwoPeriodTimesheets.Count == 0) return;
 
             IWorkbook nWorkbook = new HSSFWorkbook();
             ISheet nSheet = nWorkbook.CreateSheet(Cutoff.CutoffId);
             WritePayRegisterInfo(nSheet);
             WriteHeader(nSheet);
 
-            WriteTimesheets(MonthlyTimesheets, nSheet);
+            WriteTimesheets(TwoPeriodTimesheets, nSheet);
 
             using var nEFile = new FileStream(filePath, FileMode.Create, FileAccess.Write);
             nWorkbook.Write(nEFile);

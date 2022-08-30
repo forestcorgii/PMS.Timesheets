@@ -6,7 +6,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Pms.Timesheets.Tests;
-using Pms.Timesheets.BizLogic.Concrete;
 using Pms.Timesheets.Persistence;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,8 +14,8 @@ namespace Pms.Timesheets.ServiceLayer.EfCore.Tests
     public class ProvideTimesheetServiceTests
     {
         private readonly IDbContextFactory<TimesheetDbContext> _factory;
-        private readonly SaveTimesheetBizLogic _service;
-        private readonly ProvideTimesheetService _providerService;
+        private readonly TimesheetManager _service;
+        private readonly TimesheetProvider _providerService;
 
 
         public ProvideTimesheetServiceTests()

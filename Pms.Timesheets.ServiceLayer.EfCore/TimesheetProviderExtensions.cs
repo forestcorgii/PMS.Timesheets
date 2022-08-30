@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Pms.Timesheets.ServiceLayer.EfCore
 {
-    public static class ProvideTimesheetServiceExtensions
+    public static class TimesheetProviderExtensions
     {
         public static IEnumerable<Timesheet> FilterByCutoffId(this IEnumerable<Timesheet> timesheets, string cutoffId) =>
             timesheets.Where(ts => ts.CutoffId == cutoffId);

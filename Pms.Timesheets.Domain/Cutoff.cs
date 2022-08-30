@@ -89,7 +89,8 @@ namespace Pms.Timesheets.Domain.SupportTypes
 
         public override string ToString() => CutoffId;
 
-
+        public string GetPreviousCutoff() =>
+            new Cutoff(CutoffDate.AddDays(-15)).CutoffId;
 
         public void SetSite(string site)
         {

@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Pms.Timesheets.BizLogic.Concrete;
 using Pms.Timesheets.Domain;
 using Pms.Timesheets.Persistence;
 using Pms.Timesheets.ServiceLayer.EfCore;
@@ -15,8 +14,8 @@ namespace Pms.Timesheets.Tests.ServiceLayer.EfCore
     public class SaveTimesheetBizLogicTests
     {
         private readonly IDbContextFactory<TimesheetDbContext> _factory;
-        private readonly SaveTimesheetBizLogic _service;
-        private readonly ProvideTimesheetService _providerService;
+        private readonly TimesheetManager _service;
+        private readonly TimesheetProvider _providerService;
 
 
         public SaveTimesheetBizLogicTests()

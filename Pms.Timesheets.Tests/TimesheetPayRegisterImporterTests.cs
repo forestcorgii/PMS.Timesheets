@@ -7,7 +7,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Pms.Timesheets.Persistence;
-using Pms.Timesheets.BizLogic.Concrete;
 using Pms.Timesheets.ServiceLayer.EfCore;
 using Pms.Timesheets.Tests;
 using Pms.Timesheets.Domain;
@@ -17,8 +16,8 @@ namespace Pms.Timesheets.ServiceLayer.Files.Tests
     public class TimesheetPayRegisterImporterTests
     {
         private readonly IDbContextFactory<TimesheetDbContext> _factory;
-        private readonly SaveTimesheetBizLogic _service;
-        private readonly ProvideTimesheetService _providerService;
+        private readonly TimesheetManager _service;
+        private readonly TimesheetProvider _providerService;
 
 
         public TimesheetPayRegisterImporterTests()

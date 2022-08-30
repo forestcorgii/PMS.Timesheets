@@ -21,7 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Pms.Timesheets.BizLogic\Pms.Timesheets.BizLogic.csproj" />
     <ProjectReference Include="..\Pms.Timesheets.Persistence\Pms.Timesheets.Persistence.csproj" />
     <ProjectReference Include="..\Pms.Timesheets.ServiceLayer.EfCore\Pms.Timesheets.ServiceLayer.EfCore.csproj" />
     <ProjectReference Include="..\Pms.Timesheets.ServiceLayer.Files\Pms.Timesheets.ServiceLayer.Files.csproj" />

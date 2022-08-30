@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Pms.Timesheets.ServiceLayer.Outputs
 {
-    public class ExportTimesheetsDbfService
+    public class TimesheetDbfExporter
     {
         public void ExportDBF(string location, DateTime payrollDate, List<Timesheet> timesheets)
         {

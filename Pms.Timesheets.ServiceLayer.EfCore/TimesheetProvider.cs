@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace Pms.Timesheets.ServiceLayer.EfCore
 {
-    public class ProvideTimesheetService : IProvideTimesheetService
+    public class TimesheetProvider : IProvideTimesheetService
     {
         private IDbContextFactory<TimesheetDbContext> factory;
-        public ProvideTimesheetService(IDbContextFactory<TimesheetDbContext> _factory)
+        public TimesheetProvider(IDbContextFactory<TimesheetDbContext> _factory)
         {
             factory = _factory;
         }
