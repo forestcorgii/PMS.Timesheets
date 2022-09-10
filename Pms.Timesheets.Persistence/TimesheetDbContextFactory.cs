@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Pms.Timesheets.Persistence
 {
-    public class TimesheetDbContextFactory : IDbContextFactory<TimesheetDbContext>
+    public class TimesheetDbContextFactory : IDbContextFactory<TimesheetDbContext>, IDesignTimeDbContextFactory<TimesheetDbContext>
     {
         private readonly string _connectionString;
         private readonly bool _lazyLoad;
@@ -18,6 +19,9 @@ namespace Pms.Timesheets.Persistence
             _lazyLoad = lazyLoad;
         }
 
+        public TimesheetDbContextFactory() =>
+            _connectionString = "server=localhost;database=payroll3Test_efdb;user=root;password=Soft1234;";
+
         public TimesheetDbContext CreateDbContext()
         {
             DbContextOptions dbContextOptions = new DbContextOptionsBuilder()
@@ -27,9 +31,10 @@ namespace Pms.Timesheets.Persistence
                     options => options.MigrationsHistoryTable("TimesheetsMigrationHistoryName")
                 )
                 .Options;
-
             return new TimesheetDbContext(dbContextOptions);
         }
+
+        public TimesheetDbContext CreateDbContext(string[] args) => CreateDbContext();
     }
 }
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Pms.Payrolls.Domain.TimesheetEnums;
 
 namespace Pms.Timesheets.Domain
 {
@@ -15,6 +16,8 @@ namespace Pms.Timesheets.Domain
         public string Location { get; private set; }
         public string PayrollCode { get; private set; }
         public string BankCategory { get; private set; }
+        public TimesheetBankChoices Bank { get; private set; }
+
         public string Fullname
         {
             get

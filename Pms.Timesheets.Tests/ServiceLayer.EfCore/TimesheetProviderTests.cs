@@ -11,14 +11,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Pms.Timesheets.ServiceLayer.EfCore.Tests
 {
-    public class ProvideTimesheetServiceTests
+    public class TimesheetProviderTests
     {
         private readonly IDbContextFactory<TimesheetDbContext> _factory;
         private readonly TimesheetManager _service;
         private readonly TimesheetProvider _providerService;
 
 
-        public ProvideTimesheetServiceTests()
+        public TimesheetProviderTests()
         {
             _factory = new TimesheetDbContextFactoryFixture();
             _service = new(_factory);

@@ -13,7 +13,7 @@ namespace Pms.Timesheets.ServiceLayer.TimeSystem.Adapter
 
         public TimeDownloaderAdapter(TimeDownloaderParameter parameter)
         {
-            Client = new HttpClient { Timeout = TimeSpan.FromSeconds(30d) };
+            Client = new HttpClient { Timeout = TimeSpan.FromMinutes(2d) };
             Parameter = parameter;
         }
 

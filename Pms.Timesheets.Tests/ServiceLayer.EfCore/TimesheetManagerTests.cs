@@ -11,14 +11,14 @@ using Xunit;
 
 namespace Pms.Timesheets.Tests.ServiceLayer.EfCore
 {
-    public class SaveTimesheetBizLogicTests
+    public class TimesheetManagerTests
     {
         private readonly IDbContextFactory<TimesheetDbContext> _factory;
         private readonly TimesheetManager _service;
         private readonly TimesheetProvider _providerService;
 
 
-        public SaveTimesheetBizLogicTests()
+        public TimesheetManagerTests()
         {
             _factory = new TimesheetDbContextFactoryFixture();
             _service = new(_factory);

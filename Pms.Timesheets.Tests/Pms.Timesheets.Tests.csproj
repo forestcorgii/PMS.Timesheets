@@ -27,7 +27,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ServiceLayer.Files\" />
     <Folder Include="ServiceLayer.TimeSystem\" />
   </ItemGroup>
 

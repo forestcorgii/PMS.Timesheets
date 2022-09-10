@@ -19,6 +19,7 @@ namespace Pms.Timesheets.Persistence
             builder.Property(cc => cc.Fullname).HasColumnType("VARCHAR(60)");
             builder.Property(cc => cc.PayrollCode).HasColumnType("VARCHAR(6)");
             builder.Property(cc => cc.BankCategory).HasColumnType("VARCHAR(6)");
+            builder.Property(cc => cc.Bank).HasColumnType("TINYINT");
             builder.Property(cc => cc.Location).HasColumnType("VARCHAR(50)");
             builder.Property(cc => cc.CutoffId).HasColumnType("VARCHAR(6)").IsRequired();
             builder.Property(cc => cc.TotalHours).HasColumnType("DOUBLE(6,2)").IsRequired();

@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Pms.Payrolls.Domain.TimesheetEnums;
 
 namespace Pms.Timesheets.ServiceLayer.Outputs
 {
@@ -15,16 +16,16 @@ namespace Pms.Timesheets.ServiceLayer.Outputs
     {
         private Cutoff Cutoff { get; set; }
         private string PayrollCode { get; set; }
-        private string BankCategory { get; set; }
+        private TimesheetBankChoices Bank { get; set; }
         private List<Timesheet> Timesheets { get; set; }
         private List<Timesheet> UnconfirmedTimesheetsWithAttendance { get; set; }
         private List<Timesheet> UnconfirmedTimesheetsWithoutAttendance { get; set; }
 
-        public TimesheetFeedbackExporter(Cutoff cutoff, string payrollCode, string bankCategory, List<Timesheet> timesheets, List<Timesheet> unconfirmedTimesheetsWithAttendance, List<Timesheet> unconfirmedTimesheetsWithoutAttendance)
+        public TimesheetFeedbackExporter(Cutoff cutoff, string payrollCode, TimesheetBankChoices bank, List<Timesheet> timesheets, List<Timesheet> unconfirmedTimesheetsWithAttendance, List<Timesheet> unconfirmedTimesheetsWithoutAttendance)
         {
             Cutoff = cutoff;
             PayrollCode = payrollCode;
-            BankCategory = bankCategory;
+            Bank = bank;
             Timesheets = timesheets;
             UnconfirmedTimesheetsWithAttendance = unconfirmedTimesheetsWithAttendance;
             UnconfirmedTimesheetsWithoutAttendance = unconfirmedTimesheetsWithoutAttendance;
@@ -52,7 +53,7 @@ namespace Pms.Timesheets.ServiceLayer.Outputs
         private void WritePayRegisterInfo(ISheet nSheet)
         {
             IRow nRow = nSheet.CreateRow(0);
-            nRow.CreateCell(2).SetCellValue($"{PayrollCode} - {BankCategory}");
+            nRow.CreateCell(2).SetCellValue($"{PayrollCode} - {Bank}");
 
             nRow = nSheet.CreateRow(1);
             nRow.CreateCell(2).SetCellValue($"{Cutoff.CutoffRange[0]:MMMM d} - {Cutoff.CutoffRange[1]:MMMM dd, yyyy}");

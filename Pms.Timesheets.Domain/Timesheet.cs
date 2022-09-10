@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Newtonsoft.Json;
 using Pms.Timesheets.Domain.SupportTypes;
+using static Pms.Payrolls.Domain.TimesheetEnums;
 
 namespace Pms.Timesheets.Domain
 {
@@ -26,6 +27,8 @@ namespace Pms.Timesheets.Domain
         public string PayrollCode { get; set; } = "";
 
         public string BankCategory { get; set; } = "";
+
+        public TimesheetBankChoices Bank { get; set; }
 
         public string Location { get; set; } = "";
 
@@ -69,6 +72,7 @@ namespace Pms.Timesheets.Domain
         {
             PayrollCode = EE.PayrollCode;
             BankCategory = EE.BankCategory;
+            Bank = EE.Bank;
             Fullname = EE.Fullname;
             Location = EE.Location;
         }

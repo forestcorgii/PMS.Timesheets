@@ -18,6 +18,7 @@ namespace Pms.Timesheets.Persistence
             builder.Property(cc => cc.Location).HasColumnType("VARCHAR(45)");
             builder.Property(cc => cc.PayrollCode).HasColumnType("VARCHAR(45)");
             builder.Property(cc => cc.BankCategory).HasColumnType("VARCHAR(45)");
+            builder.Property(cc => cc.Bank).HasColumnType("TINYINT");
 
         }
     }

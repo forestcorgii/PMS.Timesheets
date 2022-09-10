@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Pms.Payrolls.Domain.TimesheetEnums;
 
 namespace Pms.Timesheets.ServiceLayer.EfCore
 {
@@ -15,8 +16,8 @@ namespace Pms.Timesheets.ServiceLayer.EfCore
         public static IEnumerable<Timesheet> FilterByPayrollCode(this IEnumerable<Timesheet> timesheets, string payrollCode) =>
            timesheets.Where(ts => ts.PayrollCode == payrollCode);
 
-        public static IEnumerable<Timesheet> FilterByBankCategory(this IEnumerable<Timesheet> timesheets, string bankCategory) =>
-            timesheets.Where(ts => ts.BankCategory == bankCategory);
+        public static IEnumerable<Timesheet> FilterByBank(this IEnumerable<Timesheet> timesheets, TimesheetBankChoices bank) =>
+            timesheets.Where(ts => ts.Bank== bank);
 
         public static IEnumerable<Timesheet> ByExportable(this IEnumerable<Timesheet> timesheets) =>
             timesheets
@@ -45,6 +46,13 @@ namespace Pms.Timesheets.ServiceLayer.EfCore
                 .Select((page, i) => page.First())
                 .ToList();
 
+        public static IEnumerable<Timesheet[]> GroupTimesheetsByEEId(this IEnumerable<Timesheet> timesheets) =>
+            timesheets
+                .GroupBy(ts => ts.EEId)
+                .Select(tss => tss.ToArray());
+
+
+
 
         public static List<string> ExtractCutoffIds(this IEnumerable<Timesheet> timesheets) =>
             timesheets
@@ -55,13 +63,12 @@ namespace Pms.Timesheets.ServiceLayer.EfCore
                 .ToList();
 
 
-        public static List<string> ExtractBankCategories(this IEnumerable<Timesheet> timesheets) =>
+        public static List<TimesheetBankChoices> ExtractBanks(this IEnumerable<Timesheet> timesheets) =>
             timesheets
-                .Where(ts => ts.BankCategory != "")
-                .GroupBy(ts => ts.BankCategory)
+                .GroupBy(ts => ts.Bank)
                 .Select(ts => ts.First())
-                .OrderBy(ts => ts.BankCategory)
-                .Select(ts => ts.BankCategory).ToList();
+                .OrderBy(ts => ts.Bank)
+                .Select(ts => ts.Bank).ToList();
 
 
         public static List<string> ExtractPayrollCodes(this IEnumerable<Timesheet> timesheets) =>

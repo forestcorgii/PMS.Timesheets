@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Pms.Timesheets.Domain;
+using Pms.Timesheets.Domain.SupportTypes;
 using Pms.Timesheets.Persistence;
 using System;
 using System.Collections.Generic;
@@ -28,6 +29,15 @@ namespace Pms.Timesheets.ServiceLayer.EfCore
             return Context.Timesheets
                 .Include(ts => ts.EE).ToList()
                 .FilterByCutoffId(cutoffId);
+        }
+        public IEnumerable<Timesheet> GetTwoPeriodTimesheets(string cutoffId)
+        {
+            Cutoff currentCutoff = new Cutoff(cutoffId);
+            using TimesheetDbContext Context = factory.CreateDbContext();
+            return Context.Timesheets
+                .Include(ts => ts.EE).ToList()
+                .Where(ts => ts.CutoffId == cutoffId || ts.CutoffId == currentCutoff.GetPreviousCutoff())
+                .OrderBy(ts => ts.CutoffId);
         }
         public IEnumerable<Timesheet> GetTimesheetsByMonth(int month)
         {

@@ -41,7 +41,11 @@ namespace Pms.Timesheets.ServiceLayer.EfCore
 
             timesheet.RawPCV = ToRawPCV(timesheet.PCV);
 
-            CreateOrUpdate(timesheet);
+            timesheet.EE = FindEmployee(timesheet.EEId);
+            if (timesheet.EE is not null)
+                timesheet.SetEmployeeDetail();
+
+            CreateOrUpdate(timesheet,true);
         }
 
         public void SaveTimesheetEmployeeData(Timesheet timesheet)
@@ -66,6 +70,12 @@ namespace Pms.Timesheets.ServiceLayer.EfCore
 
                 if (save) Context.SaveChanges();
             }
+        }
+
+        public EmployeeView FindEmployee(string eeId)
+        {
+            using (TimesheetDbContext Context = factory.CreateDbContext())
+                return Context.Employees.Find(eeId);
         }
 
     }

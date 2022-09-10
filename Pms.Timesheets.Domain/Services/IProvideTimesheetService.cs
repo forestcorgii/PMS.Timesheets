@@ -14,6 +14,8 @@ namespace Pms.Timesheets.ServiceLayer.EfCore
         
         IEnumerable<Timesheet> GetTimesheets(string cutoffId);
 
+        IEnumerable<Timesheet> GetTwoPeriodTimesheets(string cutoffId);
+
         IEnumerable<Timesheet> GetTimesheetsByMonth(int month);
 
         IEnumerable<Timesheet> GetTimesheetNoEETimesheet(string cutoffId);
