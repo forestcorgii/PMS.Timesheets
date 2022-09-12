@@ -68,13 +68,17 @@ namespace Pms.Timesheets.Domain
         #endregion 
 
 
-        public void SetEmployeeDetail()
+        public void SetEmployeeDetail(EmployeeView employee)
         {
-            PayrollCode = EE.PayrollCode;
-            BankCategory = EE.BankCategory;
-            Bank = EE.Bank;
-            Fullname = EE.Fullname;
-            Location = EE.Location;
+            if (employee is null)
+            {
+                PayrollCode = employee.PayrollCode;
+                BankCategory = employee.BankCategory;
+                Bank = employee.Bank;
+                Fullname = employee.Fullname;
+                Location = employee.Location;
+            }
+
         }
 
         public static string GenerateId(Timesheet timesheet) => $"{timesheet.EEId}_{timesheet.CutoffId}";
