@@ -26,8 +26,6 @@ namespace Pms.Timesheets.Domain
 
         public string PayrollCode { get; set; } = "";
 
-        public string BankCategory { get; set; } = "";
-
         public TimesheetBankChoices Bank { get; set; }
 
         public string Location { get; set; } = "";
@@ -73,7 +71,6 @@ namespace Pms.Timesheets.Domain
             if (employee is null)
             {
                 PayrollCode = employee.PayrollCode;
-                BankCategory = employee.BankCategory;
                 Bank = employee.Bank;
                 Fullname = employee.Fullname;
                 Location = employee.Location;

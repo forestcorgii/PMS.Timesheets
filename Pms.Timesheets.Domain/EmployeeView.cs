@@ -18,7 +18,6 @@ namespace Pms.Timesheets.Domain
         
         public string Location { get; private set; }
         public string PayrollCode { get; private set; }
-        public string BankCategory { get; private set; }
         public TimesheetBankChoices Bank { get; private set; }
 
         public string Fullname

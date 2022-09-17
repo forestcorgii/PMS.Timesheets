@@ -25,11 +25,6 @@ namespace Pms.Payrolls.Domain
             MPALO = 103,
         }
        
-        public enum TimesheetSiteChoices
-        {
-            MANILA = 1415,
-            LEYTE = 1642,
-        }
 
     }
 }

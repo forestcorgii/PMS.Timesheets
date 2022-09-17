@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Pms.Timesheets.Persistence;
 
 namespace Pms.Timesheets.Persistence.Migrations
 {
     [DbContext(typeof(TimesheetDbContext))]
-    partial class TimesheetDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220915111651_removedBankCategoryField")]
+    partial class removedBankCategoryField
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

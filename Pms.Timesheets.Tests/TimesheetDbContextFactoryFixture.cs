@@ -36,7 +36,7 @@ namespace Pms.Timesheets.Tests
             if (!context.Timesheets.Any())
             {
                 context.Timesheets.AddRange(
-                    new Timesheet() { TimesheetId = "DYYJ_2208-1", CutoffId = "2208-1", EEId = "DYYJ", PayrollCode = "P1A", BankCategory = "CCARD", Location = "SOFTWARE", RawPCV = "DESERVE`300|TESTPCV`400", Allowance = 1000 }
+                    new Timesheet() { TimesheetId = "DYYJ_2208-1", CutoffId = "2208-1", EEId = "DYYJ", PayrollCode = "P1A", Location = "SOFTWARE", RawPCV = "DESERVE`300|TESTPCV`400", Allowance = 1000 }
                 );
                 context.SaveChanges();
             }
