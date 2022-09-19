@@ -68,7 +68,7 @@ namespace Pms.Timesheets.Domain
 
         public void SetEmployeeDetail(EmployeeView employee)
         {
-            if (employee is null)
+            if (employee is not null)
             {
                 PayrollCode = employee.PayrollCode;
                 Bank = employee.Bank;
