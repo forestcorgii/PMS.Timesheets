@@ -44,12 +44,13 @@ namespace Pms.Timesheets.ServiceLayer.Outputs
                     0.ToString(),
                     timesheet.TotalND.ToString(),
                     timesheet.TotalTardy.ToString(),
+                    timesheet.Adjust1.ToString(),
                     0.ToString(),
-                    0.ToString(),
+                    timesheet.Adjust2.ToString(),
                     0.ToString(),
                     0.ToString(),
                     0.ToString(), 0.ToString(), 0.ToString(),
-                    0.ToString(), 0.ToString(), 0.ToString()
+                    0.ToString(), 0.ToString()
            };
 
         private List<DotNetDBF.DBFField> GetDBFFields()

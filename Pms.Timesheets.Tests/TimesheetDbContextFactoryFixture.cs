@@ -11,7 +11,7 @@ namespace Pms.Timesheets.Tests
 {
     public class TimesheetDbContextFactoryFixture : IDbContextFactory<TimesheetDbContext>
     {
-        private const string ConnectionString = "server=localhost;database=payroll3Test_efdb;user=root;password=Soft1234;";
+        private const string ConnectionString = "server=localhost;database=payroll3test_efdb;user=root;password=Soft1234;";
 
         private static readonly object _lock = new();
         private static bool _databaseInitialized;
@@ -36,7 +36,7 @@ namespace Pms.Timesheets.Tests
             if (!context.Timesheets.Any())
             {
                 context.Timesheets.AddRange(
-                    new Timesheet() { TimesheetId = "DYYJ_2208-1", CutoffId = "2208-1", EEId = "DYYJ", PayrollCode = "P1A", Location = "SOFTWARE", RawPCV = "DESERVE`300|TESTPCV`400", Allowance = 1000 }
+                    new Timesheet() { TimesheetId = "DYYJ_2208-1", CutoffId = "2208-1", EEId = "DYYJ", RawPCV = "DESERVE`300|TESTPCV`400", Allowance = 1000 }
                 );
                 context.SaveChanges();
             }

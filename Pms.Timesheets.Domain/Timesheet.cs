@@ -19,16 +19,8 @@ namespace Pms.Timesheets.Domain
         public string EEId { get; set; }
         public virtual EmployeeView EE { get; set; }
 
-        public string Fullname { get; set; } = "";
-
         public string CutoffId { get; set; }
         public Cutoff Cutoff => new(CutoffId);
-
-        public string PayrollCode { get; set; } = "";
-
-        public TimesheetBankChoices Bank { get; set; }
-
-        public string Location { get; set; } = "";
 
         [JsonProperty("total_hours")]
         public double TotalHours { get; set; }
@@ -57,6 +49,11 @@ namespace Pms.Timesheets.Domain
 
         public string RawPCV { get; set; }
 
+        public double Adjust1 { get; set; }
+
+        public double Adjust2 { get; set; }
+
+
         [JsonProperty("is_confirmed")]
         public bool IsConfirmed { get; set; }
 
@@ -65,18 +62,9 @@ namespace Pms.Timesheets.Domain
         public DateTime DateCreated { get; set; }
         #endregion 
 
+        public bool IsValid { get => IsConfirmed; }
 
-        public void SetEmployeeDetail(EmployeeView employee)
-        {
-            if (employee is not null)
-            {
-                PayrollCode = employee.PayrollCode;
-                Bank = employee.Bank;
-                Fullname = employee.Fullname;
-                Location = employee.Location;
-            }
-
-        }
+         
 
         public static string GenerateId(Timesheet timesheet) => $"{timesheet.EEId}_{timesheet.CutoffId}";
     }

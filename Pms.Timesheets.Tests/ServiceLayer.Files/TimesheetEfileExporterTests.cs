@@ -29,8 +29,8 @@ namespace Pms.Timesheets.ServiceLayer.Outputs.Tests
         [Fact()]
         public void ShouldExportEfile()
         {
-            string cutoffId = "2208-1";
-            string payrollCode = "P1A";
+            string cutoffId = "2211-2";
+            string payrollCode = "M-P11A";
             TimesheetBankChoices bank = TimesheetBankChoices.LBP;
             Cutoff cutoff = new Cutoff(cutoffId);
             IEnumerable<Timesheet> twoPeriodTimesheets = _providerService

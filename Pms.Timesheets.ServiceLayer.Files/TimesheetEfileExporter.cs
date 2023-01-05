@@ -68,6 +68,7 @@ namespace Pms.Timesheets.ServiceLayer.Outputs
             row.CreateCell(9).SetCellValue("ND");
             row.CreateCell(10).SetCellValue("TARDY");
             row.CreateCell(11).SetCellValue("ALLOWANCE");
+            row.CreateCell(12).SetCellValue("PCVs");
         }
 
         private void WriteTimesheets(List<Timesheet[]> timesheets, ISheet sheet)
@@ -139,6 +140,7 @@ namespace Pms.Timesheets.ServiceLayer.Outputs
             row.CreateCell(9).SetCellValue(_current.TotalND);
             row.CreateCell(10).SetCellValue(_current.TotalTardy);
             row.CreateCell(11).SetCellValue(_current.Allowance);
+            row.CreateCell(12).SetCellValue(_current.RawPCV);
 
             return true;
         }

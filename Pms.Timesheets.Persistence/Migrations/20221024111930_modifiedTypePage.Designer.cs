@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Pms.Timesheets.Persistence;
 
 namespace Pms.Timesheets.Persistence.Migrations
 {
     [DbContext(typeof(TimesheetDbContext))]
-    partial class TimesheetDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221024111930_modifiedTypePage")]
+    partial class modifiedTypePage
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -54,12 +56,6 @@ namespace Pms.Timesheets.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("VARCHAR(35)")
                         .HasColumnName("id");
-
-                    b.Property<double>("Adjust1")
-                        .HasColumnType("DOUBLE(8,2)");
-
-                    b.Property<double>("Adjust2")
-                        .HasColumnType("DOUBLE(8,2)");
 
                     b.Property<double>("Allowance")
                         .HasColumnType("DOUBLE(8,2)");
