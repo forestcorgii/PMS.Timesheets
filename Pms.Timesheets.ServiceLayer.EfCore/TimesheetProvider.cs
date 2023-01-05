@@ -26,9 +26,27 @@ namespace Pms.Timesheets.ServiceLayer.EfCore
         public IEnumerable<Timesheet> GetTimesheets(string cutoffId)
         {
             using TimesheetDbContext Context = factory.CreateDbContext();
-            return Context.Timesheets
+            IEnumerable<Timesheet> timesheetsWithEE = Context.Timesheets
                 .Include(ts => ts.EE).ToList()
                 .FilterByCutoffId(cutoffId);
+
+            IEnumerable<Timesheet> allTimesheets = Context.Timesheets.ToList()
+                .FilterByCutoffId(cutoffId);
+
+            return timesheetsWithEE.Union(allTimesheets);
+        }
+        public IEnumerable<Timesheet> GetTimesheets(string cutoffId,string payrollCodeId)
+        {
+            using TimesheetDbContext Context = factory.CreateDbContext();
+            IEnumerable<Timesheet> timesheetsWithEE = Context.Timesheets
+                .Include(ts => ts.EE).ToList()
+                .FilterByCutoffId(cutoffId)
+                .FilterByPayrollCode(payrollCodeId);
+
+            IEnumerable<Timesheet> allTimesheets = Context.Timesheets.ToList()
+                .FilterByCutoffId(cutoffId);
+
+            return timesheetsWithEE.Union(allTimesheets);
         }
         public IEnumerable<Timesheet> GetTwoPeriodTimesheets(string cutoffId)
         {
@@ -122,5 +140,10 @@ namespace Pms.Timesheets.ServiceLayer.EfCore
             return new List<int>();
         }
 
+        public EmployeeView FindEmployeeView(string eeId)
+        {
+            using TimesheetDbContext Context = factory.CreateDbContext();
+            return Context.Employees.Find(eeId);
+        }
     }
 }
