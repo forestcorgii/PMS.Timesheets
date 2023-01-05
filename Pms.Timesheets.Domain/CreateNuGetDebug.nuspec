@@ -2,7 +2,7 @@
 <package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>Pms.Timesheets</id>
-    <version>1.0.0-preview003</version>
+    <version>1.0.0-preview004</version>
     <authors>you must give a list of author(s)</authors>
     <description>you must provide a description of the NuGet</description>
     <releaseNotes>optional: what is changed in this release?</releaseNotes>

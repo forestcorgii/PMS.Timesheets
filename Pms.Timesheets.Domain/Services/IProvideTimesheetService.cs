@@ -10,6 +10,8 @@ namespace Pms.Timesheets.ServiceLayer.EfCore
     public interface IProvideTimesheetService
     {
 
+        EmployeeView FindEmployeeView(string eeId);
+
         IEnumerable<Timesheet> GetTimesheets();
         
         IEnumerable<Timesheet> GetTimesheets(string cutoffId);
