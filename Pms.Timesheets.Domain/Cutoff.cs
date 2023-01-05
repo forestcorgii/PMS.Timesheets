@@ -49,8 +49,12 @@ namespace Pms.Timesheets.Domain.SupportTypes
             int month = int.Parse(CutoffId.Substring(2, 2));
             int dayIdx = int.Parse(CutoffId.Substring(5, 1));
             int day = 15;
+
+
             if (dayIdx == 2)
                 day = DateTime.DaysInMonth(year, month);
+            else if (dayIdx != 1)
+                day = dayIdx;
 
             CutoffDate = new DateTime(year + 2000, month, day); // update year to 3000 at the end of the millennium
         }
@@ -90,7 +94,7 @@ namespace Pms.Timesheets.Domain.SupportTypes
         public override string ToString() => CutoffId;
 
         public string GetPreviousCutoff() =>
-            new Cutoff(CutoffDate.AddDays(-15)).CutoffId;
+            new Cutoff(CutoffDate.AddDays(-16)).CutoffId;
 
         public void SetSite(string site)
         {
